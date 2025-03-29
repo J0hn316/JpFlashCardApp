@@ -1,0 +1,2804 @@
+[
+  {
+    "Japanese": "韓国人",
+    "English": "Korean person",
+    "Romaji": "kankokujin",
+    "Unit": " Nationality"
+  },
+  {
+    "Japanese": "アメリカ人",
+    "English": "American person",
+    "Romaji": "amerikajin",
+    "Unit": " Nationality"
+  },
+  {
+    "Japanese": "日本人",
+    "English": "Japanese person",
+    "Romaji": "nihonjin",
+    "Unit": " Nationality"
+  },
+  {
+    "Japanese": "中国人",
+    "English": "Chinese person",
+    "Romaji": "chuugokujin",
+    "Unit": " Nationality"
+  },
+  {
+    "Japanese": "イギリス人",
+    "English": "British person",
+    "Romaji": "igirisujin",
+    "Unit": " Nationality"
+  },
+  {
+    "Japanese": "会社員",
+    "English": "office worker",
+    "Romaji": "kaishain",
+    "Unit": "Profession"
+  },
+  {
+    "Japanese": "学生",
+    "English": "student",
+    "Romaji": "gakusei",
+    "Unit": "Profession"
+  },
+  {
+    "Japanese": "医者",
+    "English": "doctor",
+    "Romaji": "isha",
+    "Unit": "Profession"
+  },
+  {
+    "Japanese": "先生",
+    "English": "teacher",
+    "Romaji": "sensei",
+    "Unit": "Profession"
+  },
+  {
+    "Japanese": "留学生",
+    "English": "foreign student",
+    "Romaji": "ryuugakusei",
+    "Unit": "Profession"
+  },
+  {
+    "Japanese": "男の人",
+    "English": "man",
+    "Romaji": "otokonohito",
+    "Unit": "Gender"
+  },
+  {
+    "Japanese": "女の人",
+    "English": "woman",
+    "Romaji": "onnanohito",
+    "Unit": "Gender"
+  },
+  {
+    "Japanese": "本",
+    "English": "book",
+    "Romaji": "hon",
+    "Unit": "Book"
+  },
+  {
+    "Japanese": "新聞",
+    "English": "newspaper",
+    "Romaji": "shimbun",
+    "Unit": "Book"
+  },
+  {
+    "Japanese": "雑誌",
+    "English": "magazine",
+    "Romaji": "zasshi",
+    "Unit": "Book"
+  },
+  {
+    "Japanese": "手紙",
+    "English": "letter",
+    "Romaji": "tegami",
+    "Unit": "Book"
+  },
+  {
+    "Japanese": "机",
+    "English": "desk",
+    "Romaji": "tsukue",
+    "Unit": "Household"
+  },
+  {
+    "Japanese": "椅子",
+    "English": "chair",
+    "Romaji": "isu",
+    "Unit": "Household"
+  },
+  {
+    "Japanese": "テレビ",
+    "English": "TV",
+    "Romaji": "terebi",
+    "Unit": "Household"
+  },
+  {
+    "Japanese": "カメラ",
+    "English": "camera",
+    "Romaji": "kamera",
+    "Unit": "Household"
+  },
+  {
+    "Japanese": "テーブル",
+    "English": "table",
+    "Romaji": "tēburu",
+    "Unit": "Household"
+  },
+  {
+    "Japanese": "映画",
+    "English": "movie",
+    "Romaji": "eiga",
+    "Unit": "Language"
+  },
+  {
+    "Japanese": "日本語",
+    "English": "Japanese language",
+    "Romaji": "nihongo",
+    "Unit": "Language"
+  },
+  {
+    "Japanese": "中国語",
+    "English": "Chinese language",
+    "Romaji": "chuugokugo",
+    "Unit": "Language"
+  },
+  {
+    "Japanese": "英語",
+    "English": "English language",
+    "Romaji": "eigo",
+    "Unit": "Language"
+  },
+  {
+    "Japanese": "辞書",
+    "English": "dictionary",
+    "Romaji": "jisho",
+    "Unit": "Daily Supplies"
+  },
+  {
+    "Japanese": "ハンカチ",
+    "English": "handkerchief",
+    "Romaji": "hankachi",
+    "Unit": "Daily Supplies"
+  },
+  {
+    "Japanese": "パソコン",
+    "English": "personal computer",
+    "Romaji": "pasokon",
+    "Unit": "Daily Supplies"
+  },
+  {
+    "Japanese": "時計",
+    "English": "clock",
+    "Romaji": "tokei",
+    "Unit": "Daily Supplies"
+  },
+  {
+    "Japanese": "傘",
+    "English": "umbrella",
+    "Romaji": "kasa",
+    "Unit": "Daily Supplies"
+  },
+  {
+    "Japanese": "カバン",
+    "English": "bag",
+    "Romaji": "kaban",
+    "Unit": "Daily Supplies"
+  },
+  {
+    "Japanese": "トイレ",
+    "English": "toilet",
+    "Romaji": "toire",
+    "Unit": "School"
+  },
+  {
+    "Japanese": "事務室",
+    "English": "office room",
+    "Romaji": "jimushitsu",
+    "Unit": "School"
+  },
+  {
+    "Japanese": "図書館",
+    "English": "library",
+    "Romaji": "toshokan",
+    "Unit": "School"
+  },
+  {
+    "Japanese": "会議室",
+    "English": "meeting room",
+    "Romaji": "kaigishitsu",
+    "Unit": "School"
+  },
+  {
+    "Japanese": "学校",
+    "English": "school",
+    "Romaji": "gakkou",
+    "Unit": "School"
+  },
+  {
+    "Japanese": "教室",
+    "English": "classroom",
+    "Romaji": "kyoushitsu",
+    "Unit": "School"
+  },
+  {
+    "Japanese": "レストラン",
+    "English": "restaurant",
+    "Romaji": "resutoran",
+    "Unit": "Public Area"
+  },
+  {
+    "Japanese": "デパート",
+    "English": "department store",
+    "Romaji": "depāto",
+    "Unit": "Public Area"
+  },
+  {
+    "Japanese": "映画館",
+    "English": "movie theater",
+    "Romaji": "eigakan",
+    "Unit": "Public Area"
+  },
+  {
+    "Japanese": "銀行",
+    "English": "bank",
+    "Romaji": "ginkou",
+    "Unit": "Public Area"
+  },
+  {
+    "Japanese": "本屋",
+    "English": "book store",
+    "Romaji": "hon'ya",
+    "Unit": "Public Area"
+  },
+  {
+    "Japanese": "病院",
+    "English": "hospital",
+    "Romaji": "byouin",
+    "Unit": "Public Area"
+  },
+  {
+    "Japanese": "喫茶店",
+    "English": "coffee shop",
+    "Romaji": "kissaten",
+    "Unit": "Public Area"
+  },
+  {
+    "Japanese": "郵便局",
+    "English": "post office",
+    "Romaji": "yuubinkyoku",
+    "Unit": "Public Area"
+  },
+  {
+    "Japanese": "公園",
+    "English": "park",
+    "Romaji": "kouen",
+    "Unit": "Existence 1"
+  },
+  {
+    "Japanese": "石",
+    "English": "stone",
+    "Romaji": "ishi",
+    "Unit": "Existence 1"
+  },
+  {
+    "Japanese": "庭",
+    "English": "garden",
+    "Romaji": "niwa",
+    "Unit": "Existence 1"
+  },
+  {
+    "Japanese": "部屋",
+    "English": "room",
+    "Romaji": "heya",
+    "Unit": "Existence 1"
+  },
+  {
+    "Japanese": "花",
+    "English": "flower",
+    "Romaji": "hana",
+    "Unit": "Existence 1"
+  },
+  {
+    "Japanese": "子供",
+    "English": "child",
+    "Romaji": "kodomo",
+    "Unit": "Humans & Animals"
+  },
+  {
+    "Japanese": "犬",
+    "English": "dog",
+    "Romaji": "inu",
+    "Unit": "Humans & Animals"
+  },
+  {
+    "Japanese": "居間",
+    "English": "living room",
+    "Romaji": "ima",
+    "Unit": "Humans & Animals"
+  },
+  {
+    "Japanese": "猫",
+    "English": "cat",
+    "Romaji": "neko",
+    "Unit": "Humans & Animals"
+  },
+  {
+    "Japanese": "薬",
+    "English": "medicine",
+    "Romaji": "kusuri",
+    "Unit": "Location"
+  },
+  {
+    "Japanese": "箱",
+    "English": "box",
+    "Romaji": "hako",
+    "Unit": "Location"
+  },
+  {
+    "Japanese": "隣",
+    "English": "next to",
+    "Romaji": "tonari",
+    "Unit": "Location"
+  },
+  {
+    "Japanese": "中",
+    "English": "inside",
+    "Romaji": "naka",
+    "Unit": "Location"
+  },
+  {
+    "Japanese": "ベッド",
+    "English": "bed",
+    "Romaji": "beddo",
+    "Unit": "Location"
+  },
+  {
+    "Japanese": "上",
+    "English": "above",
+    "Romaji": "ue",
+    "Unit": "Location"
+  },
+  {
+    "Japanese": "前",
+    "English": "front",
+    "Romaji": "mae",
+    "Unit": "Location"
+  },
+  {
+    "Japanese": "後ろ",
+    "English": "behind",
+    "Romaji": "ushiro",
+    "Unit": "Location"
+  },
+  {
+    "Japanese": "下",
+    "English": "below",
+    "Romaji": "shita",
+    "Unit": "Location"
+  },
+  {
+    "Japanese": "冷蔵庫",
+    "English": "fridge",
+    "Romaji": "reizouko",
+    "Unit": "Existence 2"
+  },
+  {
+    "Japanese": "茶碗",
+    "English": "rice bowl",
+    "Romaji": "jawan",
+    "Unit": "Existence 2"
+  },
+  {
+    "Japanese": "りんご",
+    "English": "apple",
+    "Romaji": "ringo",
+    "Unit": "Existence 2"
+  },
+  {
+    "Japanese": "ビール",
+    "English": "beer",
+    "Romaji": "bīru",
+    "Unit": "Existence 2"
+  },
+  {
+    "Japanese": "紅茶",
+    "English": "black tea",
+    "Romaji": "koucha",
+    "Unit": "Existence 2"
+  },
+  {
+    "Japanese": "グラス",
+    "English": "glass",
+    "Romaji": "gurasu",
+    "Unit": "Existence 2"
+  },
+  {
+    "Japanese": "鳥",
+    "English": "bird",
+    "Romaji": "tori",
+    "Unit": "Humans & Animals 2"
+  },
+  {
+    "Japanese": "横",
+    "English": "beside",
+    "Romaji": "yoko",
+    "Unit": "Humans & Animals ２"
+  },
+  {
+    "Japanese": "家",
+    "English": "house",
+    "Romaji": "ie",
+    "Unit": "Humans & Animals 2"
+  },
+  {
+    "Japanese": "外",
+    "English": "outside",
+    "Romaji": "soto",
+    "Unit": "Humans & Animals 2"
+  },
+  {
+    "Japanese": "車",
+    "English": "car",
+    "Romaji": "kuruma",
+    "Unit": "Humans & Animals 6"
+  },
+  {
+    "Japanese": "木",
+    "English": "tree",
+    "Romaji": "ki",
+    "Unit": "Humans & Animals 5"
+  },
+  {
+    "Japanese": "魚",
+    "English": "fish",
+    "Romaji": "sakana",
+    "Unit": "Humans & Animals 2"
+  },
+  {
+    "Japanese": "ペン",
+    "English": "pen",
+    "Romaji": "pen",
+    "Unit": "Negation"
+  },
+  {
+    "Japanese": "社長",
+    "English": "president",
+    "Romaji": "shachou",
+    "Unit": "Negation"
+  },
+  {
+    "Japanese": "ペット",
+    "English": "pet",
+    "Romaji": "petto",
+    "Unit": "Negation"
+  },
+  {
+    "Japanese": "消しゴム",
+    "English": "eraser",
+    "Romaji": "keshigomu",
+    "Unit": "Negation"
+  },
+  {
+    "Japanese": "財布",
+    "English": "wallet",
+    "Romaji": "saifu",
+    "Unit": "Negation"
+  },
+  {
+    "Japanese": "二",
+    "English": "2",
+    "Romaji": "ni",
+    "Unit": "Number"
+  },
+  {
+    "Japanese": "三",
+    "English": "3",
+    "Romaji": "san",
+    "Unit": "Number"
+  },
+  {
+    "Japanese": "五",
+    "English": "5",
+    "Romaji": "go",
+    "Unit": "Number"
+  },
+  {
+    "Japanese": "十",
+    "English": "10",
+    "Romaji": "juu",
+    "Unit": "Number"
+  },
+  {
+    "Japanese": "九",
+    "English": "9",
+    "Romaji": "kyuu",
+    "Unit": "Number"
+  },
+  {
+    "Japanese": "一",
+    "English": "1",
+    "Romaji": "ichi",
+    "Unit": "Number"
+  },
+  {
+    "Japanese": "六",
+    "English": "6",
+    "Romaji": "roku",
+    "Unit": "Number"
+  },
+  {
+    "Japanese": "八",
+    "English": "8",
+    "Romaji": "hachi",
+    "Unit": "Number"
+  },
+  {
+    "Japanese": "四十七",
+    "English": "47",
+    "Romaji": "yonjuunana",
+    "Unit": "Number"
+  },
+  {
+    "Japanese": "二十九",
+    "English": "29",
+    "Romaji": "nijuukyuu",
+    "Unit": "Number"
+  },
+  {
+    "Japanese": "五十六",
+    "English": "56",
+    "Romaji": "gojuuroku",
+    "Unit": "Number"
+  },
+  {
+    "Japanese": "八十三",
+    "English": "83",
+    "Romaji": "hachijuusan",
+    "Unit": "Number"
+  },
+  {
+    "Japanese": "七十四",
+    "English": "74",
+    "Romaji": "nanajuuyon",
+    "Unit": "Number"
+  },
+  {
+    "Japanese": "六十五",
+    "English": "65",
+    "Romaji": "rokujuugo",
+    "Unit": "Number"
+  },
+  {
+    "Japanese": "十一",
+    "English": "11",
+    "Romaji": "juuichi",
+    "Unit": "Number"
+  },
+  {
+    "Japanese": "三十八",
+    "English": "38",
+    "Romaji": "sanjuuhachi",
+    "Unit": "Number"
+  },
+  {
+    "Japanese": "七",
+    "English": "7",
+    "Romaji": "shichi",
+    "Unit": "Number"
+  },
+  {
+    "Japanese": "九十二",
+    "English": "92",
+    "Romaji": "kyuujuuni",
+    "Unit": "Number"
+  },
+  {
+    "Japanese": "四",
+    "English": "4",
+    "Romaji": "yon",
+    "Unit": "Number"
+  },
+  {
+    "Japanese": "午後",
+    "English": "PM",
+    "Romaji": "gogo",
+    "Unit": "Time"
+  },
+  {
+    "Japanese": "四時",
+    "English": "4 o'clock",
+    "Romaji": "yoji",
+    "Unit": "Time"
+  },
+  {
+    "Japanese": "九時",
+    "English": "9 o'clock",
+    "Romaji": "kuji",
+    "Unit": "Time"
+  },
+  {
+    "Japanese": "二時十分",
+    "English": "2:10",
+    "Romaji": "nijijuppun",
+    "Unit": "Time"
+  },
+  {
+    "Japanese": "十時半",
+    "English": "half past 10",
+    "Romaji": "juujihan",
+    "Unit": "Time"
+  },
+  {
+    "Japanese": "八時十五分",
+    "English": "8:15",
+    "Romaji": "hachijijuugofun",
+    "Unit": "Time"
+  },
+  {
+    "Japanese": "六時三十分",
+    "English": "6:30",
+    "Romaji": "rokujisanjuppun",
+    "Unit": "Time"
+  },
+  {
+    "Japanese": "午前",
+    "English": "AM",
+    "Romaji": "gozen",
+    "Unit": "Time"
+  },
+  {
+    "Japanese": "七時",
+    "English": "7 o'clock",
+    "Romaji": "shichiji",
+    "Unit": "Time"
+  },
+  {
+    "Japanese": "月曜日",
+    "English": "Monday",
+    "Romaji": "getsuyoubi",
+    "Unit": "Day"
+  },
+  {
+    "Japanese": "木曜日",
+    "English": "Thursday",
+    "Romaji": "mokuyoubi",
+    "Unit": "Day"
+  },
+  {
+    "Japanese": "水曜日",
+    "English": "Wednesday",
+    "Romaji": "suiyoubi",
+    "Unit": "Day"
+  },
+  {
+    "Japanese": "火曜日",
+    "English": "Tuesday",
+    "Romaji": "kayoubi",
+    "Unit": "Day"
+  },
+  {
+    "Japanese": "金曜日",
+    "English": "Friday",
+    "Romaji": "kin'youbi",
+    "Unit": "Day"
+  },
+  {
+    "Japanese": "男の子",
+    "English": "boy",
+    "Romaji": "otokonoko",
+    "Unit": "Age"
+  },
+  {
+    "Japanese": "女の子",
+    "English": "girl",
+    "Romaji": "onnanoko",
+    "Unit": "Age"
+  },
+  {
+    "Japanese": "100",
+    "English": "100",
+    "Romaji": "hyaku",
+    "Unit": "Shopping"
+  },
+  {
+    "Japanese": "300",
+    "English": "300",
+    "Romaji": "sanbyaku",
+    "Unit": "Shopping"
+  },
+  {
+    "Japanese": "400",
+    "English": "400",
+    "Romaji": "yonhyaku",
+    "Unit": "Shopping"
+  },
+  {
+    "Japanese": "600",
+    "English": "600",
+    "Romaji": "roppyaku",
+    "Unit": "Shopping"
+  },
+  {
+    "Japanese": "800",
+    "English": "800",
+    "Romaji": "happyaku",
+    "Unit": "Shopping"
+  },
+  {
+    "Japanese": "700",
+    "English": "700",
+    "Romaji": "nanahyaku",
+    "Unit": "Shopping"
+  },
+  {
+    "Japanese": "200",
+    "English": "200",
+    "Romaji": "nihyaku",
+    "Unit": "Shopping"
+  },
+  {
+    "Japanese": "500",
+    "English": "500",
+    "Romaji": "gohyaku",
+    "Unit": "Shopping"
+  },
+  {
+    "Japanese": "900",
+    "English": "900",
+    "Romaji": "kyuuyaku",
+    "Unit": "Shopping"
+  },
+  {
+    "Japanese": "1000",
+    "English": "1000",
+    "Romaji": "sen",
+    "Unit": "Shopping"
+  },
+  {
+    "Japanese": "4000",
+    "English": "4000",
+    "Romaji": "yonsen",
+    "Unit": "Shopping"
+  },
+  {
+    "Japanese": "3000",
+    "English": "3000",
+    "Romaji": "sanzen",
+    "Unit": "Shopping"
+  },
+  {
+    "Japanese": "7000",
+    "English": "7000",
+    "Romaji": "nanasen",
+    "Unit": "Shopping"
+  },
+  {
+    "Japanese": "6000",
+    "English": "6000",
+    "Romaji": "rokusen",
+    "Unit": "Shopping"
+  },
+  {
+    "Japanese": "8000",
+    "English": "8000",
+    "Romaji": "hassen",
+    "Unit": "Shopping"
+  },
+  {
+    "Japanese": "円",
+    "English": "yen",
+    "Romaji": "en",
+    "Unit": "Shopping"
+  },
+  {
+    "Japanese": "10000",
+    "English": "10000",
+    "Romaji": "ichiman",
+    "Unit": "Shopping"
+  },
+  {
+    "Japanese": "お父さん",
+    "English": "father",
+    "Romaji": "otousan",
+    "Unit": "Family"
+  },
+  {
+    "Japanese": "お母さん",
+    "English": "mother",
+    "Romaji": "okaasan",
+    "Unit": "Family"
+  },
+  {
+    "Japanese": "おじいさん",
+    "English": "grandfather",
+    "Romaji": "ojiisan",
+    "Unit": "Family"
+  },
+  {
+    "Japanese": "おばあさん",
+    "English": "grandmother",
+    "Romaji": "obaasan",
+    "Unit": "Family"
+  },
+  {
+    "Japanese": "お兄さん",
+    "English": "older brother",
+    "Romaji": "oniisan",
+    "Unit": "Family"
+  },
+  {
+    "Japanese": "お姉さん",
+    "English": "older sister",
+    "Romaji": "oneesan",
+    "Unit": "Family"
+  },
+  {
+    "Japanese": "アメリカ",
+    "English": "America",
+    "Romaji": "amerika",
+    "Unit": "Family"
+  },
+  {
+    "Japanese": "日本",
+    "English": "Japan",
+    "Romaji": "nihon",
+    "Unit": "Family"
+  },
+  {
+    "Japanese": "母",
+    "English": "my mother",
+    "Romaji": "haha",
+    "Unit": "Family"
+  },
+  {
+    "Japanese": "兄",
+    "English": "my older brother",
+    "Romaji": "ani",
+    "Unit": "Family"
+  },
+  {
+    "Japanese": "姉",
+    "English": "my older sister",
+    "Romaji": "ane",
+    "Unit": "Family"
+  },
+  {
+    "Japanese": "息子",
+    "English": "son",
+    "Romaji": "musuko",
+    "Unit": "Family"
+  },
+  {
+    "Japanese": "娘",
+    "English": "daughter",
+    "Romaji": "musume",
+    "Unit": "Family"
+  },
+  {
+    "Japanese": "父",
+    "English": "my father",
+    "Romaji": "chichi",
+    "Unit": "Family"
+  },
+  {
+    "Japanese": "晴れ",
+    "English": "sunny",
+    "Romaji": "hare",
+    "Unit": "Weather"
+  },
+  {
+    "Japanese": "曇り",
+    "English": "cloudy",
+    "Romaji": "kumori",
+    "Unit": "Weather"
+  },
+  {
+    "Japanese": "雪",
+    "English": "snow",
+    "Romaji": "yuki",
+    "Unit": "Weather"
+  },
+  {
+    "Japanese": "土曜日",
+    "English": "Saturday",
+    "Romaji": "doyoubi",
+    "Unit": "Weather"
+  },
+  {
+    "Japanese": "雨",
+    "English": "rain",
+    "Romaji": "ame",
+    "Unit": "Weather"
+  },
+  {
+    "Japanese": "天気",
+    "English": "weather",
+    "Romaji": "tenki",
+    "Unit": "Weather"
+  },
+  {
+    "Japanese": "日曜日",
+    "English": "Sunday",
+    "Romaji": "nichiyoubi",
+    "Unit": "Weather"
+  },
+  {
+    "Japanese": "春",
+    "English": "Spring",
+    "Romaji": "haru",
+    "Unit": "Season"
+  },
+  {
+    "Japanese": "夏",
+    "English": "Summer",
+    "Romaji": "natsu",
+    "Unit": "Season"
+  },
+  {
+    "Japanese": "東京",
+    "English": "Tokyo",
+    "Romaji": "toukyou",
+    "Unit": "Season"
+  },
+  {
+    "Japanese": "暖かい",
+    "English": "warm",
+    "Romaji": "atatakai",
+    "Unit": "Season"
+  },
+  {
+    "Japanese": "暑い",
+    "English": "hot",
+    "Romaji": "atsui",
+    "Unit": "Season"
+  },
+  {
+    "Japanese": "涼しい",
+    "English": "cool",
+    "Romaji": "suzushii",
+    "Unit": "Season"
+  },
+  {
+    "Japanese": "寒い",
+    "English": "cold",
+    "Romaji": "samui",
+    "Unit": "Season"
+  },
+  {
+    "Japanese": "冬",
+    "English": "Winter",
+    "Romaji": "fuyu",
+    "Unit": "Season"
+  },
+  {
+    "Japanese": "秋",
+    "English": "Autumn",
+    "Romaji": "aki",
+    "Unit": "Season"
+  },
+  {
+    "Japanese": "馬",
+    "English": "horse",
+    "Romaji": "uma",
+    "Unit": "Animals"
+  },
+  {
+    "Japanese": "大きい",
+    "English": "big",
+    "Romaji": "ookii",
+    "Unit": "Animals"
+  },
+  {
+    "Japanese": "小さい",
+    "English": "small",
+    "Romaji": "chiisai",
+    "Unit": "Animals"
+  },
+  {
+    "Japanese": "パンダ",
+    "English": "panda",
+    "Romaji": "panda",
+    "Unit": "Animals"
+  },
+  {
+    "Japanese": "軽い",
+    "English": "light (weight)",
+    "Romaji": "karui",
+    "Unit": "Animals"
+  },
+  {
+    "Japanese": "重い",
+    "English": "heavy",
+    "Romaji": "omoi",
+    "Unit": "Animals"
+  },
+  {
+    "Japanese": "かわいい",
+    "English": "cute",
+    "Romaji": "kawaii",
+    "Unit": "Animals"
+  },
+  {
+    "Japanese": "虎",
+    "English": "tiger",
+    "Romaji": "tora",
+    "Unit": "Animals"
+  },
+  {
+    "Japanese": "サル",
+    "English": "monkey",
+    "Romaji": "saru",
+    "Unit": "Animal 2"
+  },
+  {
+    "Japanese": "荷物",
+    "English": "luggage",
+    "Romaji": "nimotsu",
+    "Unit": "Animal 2"
+  },
+  {
+    "Japanese": "ライオン",
+    "English": "lion",
+    "Romaji": "raion",
+    "Unit": "Animal 2"
+  },
+  {
+    "Japanese": "像",
+    "English": "elephant",
+    "Romaji": "zou",
+    "Unit": "Animal 2"
+  },
+  {
+    "Japanese": "ウサギ",
+    "English": "rabbit",
+    "Romaji": "usagi",
+    "Unit": "Animal 2"
+  },
+  {
+    "Japanese": "動物",
+    "English": "animal",
+    "Romaji": "doubutsu",
+    "Unit": "Animal 2"
+  },
+  {
+    "Japanese": "黒い",
+    "English": "black",
+    "Romaji": "kuroi",
+    "Unit": "Color"
+  },
+  {
+    "Japanese": "赤い",
+    "English": "red",
+    "Romaji": "akai",
+    "Unit": "Color"
+  },
+  {
+    "Japanese": "刺身",
+    "English": "sashimi",
+    "Romaji": "sashimi",
+    "Unit": "Color"
+  },
+  {
+    "Japanese": "色",
+    "English": "colour",
+    "Romaji": "iro",
+    "Unit": "Color"
+  },
+  {
+    "Japanese": "寿司",
+    "English": "sushi",
+    "Romaji": "sushi",
+    "Unit": "Color"
+  },
+  {
+    "Japanese": "白い",
+    "English": "white",
+    "Romaji": "shiroi",
+    "Unit": "Color"
+  },
+  {
+    "Japanese": "バナナ",
+    "English": "banana",
+    "Romaji": "banana",
+    "Unit": "Color"
+  },
+  {
+    "Japanese": "黄色い",
+    "English": "yellow",
+    "Romaji": "kiiroi",
+    "Unit": "Color"
+  },
+  {
+    "Japanese": "青い",
+    "English": "blue",
+    "Romaji": "aoi",
+    "Unit": "Color"
+  },
+  {
+    "Japanese": "ジュース",
+    "English": "juice",
+    "Romaji": "jūsu",
+    "Unit": "Color"
+  },
+  {
+    "Japanese": "上着",
+    "English": "jacket",
+    "Romaji": "uwagi",
+    "Unit": "Clothing"
+  },
+  {
+    "Japanese": "靴下",
+    "English": "socks",
+    "Romaji": "kutsushita",
+    "Unit": "Clothing"
+  },
+  {
+    "Japanese": "緑",
+    "English": "green",
+    "Romaji": "midori",
+    "Unit": "Clothing"
+  },
+  {
+    "Japanese": "長い",
+    "English": "long",
+    "Romaji": "nagai",
+    "Unit": "Clothing"
+  },
+  {
+    "Japanese": "ネクタイ",
+    "English": "necktie",
+    "Romaji": "nekutai",
+    "Unit": "Clothing"
+  },
+  {
+    "Japanese": "高い",
+    "English": "expensive",
+    "Romaji": "takai",
+    "Unit": "Clothing"
+  },
+  {
+    "Japanese": "安い",
+    "English": "cheap",
+    "Romaji": "yasui",
+    "Unit": "Clothing"
+  },
+  {
+    "Japanese": "セーター",
+    "English": "sweater",
+    "Romaji": "sētā",
+    "Unit": "Clothing"
+  },
+  {
+    "Japanese": "オレンジ色",
+    "English": "orange",
+    "Romaji": "orenjiiro",
+    "Unit": "Clothing"
+  },
+  {
+    "Japanese": "靴",
+    "English": "shoes",
+    "Romaji": "kutsu",
+    "Unit": "Clothing"
+  },
+  {
+    "Japanese": "コート",
+    "English": "coat",
+    "Romaji": "kōto",
+    "Unit": "Clothing"
+  },
+  {
+    "Japanese": "ジーンズ",
+    "English": "jeans",
+    "Romaji": "jīnzu",
+    "Unit": "Clothing"
+  },
+  {
+    "Japanese": "シャツ",
+    "English": "shirt",
+    "Romaji": "shatsu",
+    "Unit": "Clothing"
+  },
+  {
+    "Japanese": "洋服",
+    "English": "Western clothes",
+    "Romaji": "youfuku",
+    "Unit": "Clothing"
+  },
+  {
+    "Japanese": "短い",
+    "English": "short",
+    "Romaji": "mijikai",
+    "Unit": "Clothing"
+  },
+  {
+    "Japanese": "ズボン",
+    "English": "pants",
+    "Romaji": "zubon",
+    "Unit": "Clothing"
+  },
+  {
+    "Japanese": "静か",
+    "English": "quiet",
+    "Romaji": "shizuka",
+    "Unit": "Adjective"
+  },
+  {
+    "Japanese": "町",
+    "English": "town",
+    "Romaji": "machi",
+    "Unit": "Adjective"
+  },
+  {
+    "Japanese": "にぎやか",
+    "English": "lively",
+    "Romaji": "nigiyaka",
+    "Unit": "Adjective"
+  },
+  {
+    "Japanese": "コンビニ",
+    "English": "convenience store",
+    "Romaji": "kombini",
+    "Unit": "Adjective"
+  },
+  {
+    "Japanese": "簡単",
+    "English": "simple",
+    "Romaji": "kantan",
+    "Unit": "Adjective"
+  },
+  {
+    "Japanese": "便利",
+    "English": "convenient",
+    "Romaji": "benri",
+    "Unit": "Adjective"
+  },
+  {
+    "Japanese": "人",
+    "English": "person",
+    "Romaji": "jin",
+    "Unit": "Adjective 2"
+  },
+  {
+    "Japanese": "お酒",
+    "English": "alcohol",
+    "Romaji": "osake",
+    "Unit": "Adjective 2"
+  },
+  {
+    "Japanese": "親切",
+    "English": "kind",
+    "Romaji": "shinsetsu",
+    "Unit": "Adjective 2"
+  },
+  {
+    "Japanese": "きれい",
+    "English": "pretty",
+    "Romaji": "kirei",
+    "Unit": "Adjective 2"
+  },
+  {
+    "Japanese": "有名",
+    "English": "famous",
+    "Romaji": "yuumei",
+    "Unit": "Adjective 2"
+  },
+  {
+    "Japanese": "料理",
+    "English": "cuisine",
+    "Romaji": "ryouri",
+    "Unit": "Adjective 2"
+  },
+  {
+    "Japanese": "買う",
+    "English": "to buy",
+    "Romaji": "kau",
+    "Unit": "Verb 1"
+  },
+  {
+    "Japanese": "夫",
+    "English": "my husband",
+    "Romaji": "otto",
+    "Unit": "Verb 1"
+  },
+  {
+    "Japanese": "コーヒー",
+    "English": "coffee",
+    "Romaji": "kōhī",
+    "Unit": "Verb 1"
+  },
+  {
+    "Japanese": "飲む",
+    "English": "to drink",
+    "Romaji": "nomu",
+    "Unit": "Verb 1"
+  },
+  {
+    "Japanese": "書く",
+    "English": "to write",
+    "Romaji": "kaku",
+    "Unit": "Verb 1"
+  },
+  {
+    "Japanese": "奥さん",
+    "English": "your wife",
+    "Romaji": "okusan",
+    "Unit": "Verb 1"
+  },
+  {
+    "Japanese": "読む",
+    "English": "to read",
+    "Romaji": "yomu",
+    "Unit": "Verb 1"
+  },
+  {
+    "Japanese": "音楽",
+    "English": "music",
+    "Romaji": "ongaku",
+    "Unit": "Verb 1"
+  },
+  {
+    "Japanese": "パン",
+    "English": "bread",
+    "Romaji": "pan",
+    "Unit": "Verb 1"
+  },
+  {
+    "Japanese": "妻",
+    "English": "my wife",
+    "Romaji": "tsuma",
+    "Unit": "Verb 1"
+  },
+  {
+    "Japanese": "お茶",
+    "English": "tea",
+    "Romaji": "ocha",
+    "Unit": "Verb 1"
+  },
+  {
+    "Japanese": "ラジオ",
+    "English": "radio",
+    "Romaji": "rajio",
+    "Unit": "Verb 1"
+  },
+  {
+    "Japanese": "聞く",
+    "English": "to listen",
+    "Romaji": "kiku",
+    "Unit": "Verb 1"
+  },
+  {
+    "Japanese": "ご主人",
+    "English": "your husband",
+    "Romaji": "goshujin",
+    "Unit": "Verb 1"
+  },
+  {
+    "Japanese": "牛乳",
+    "English": "milk",
+    "Romaji": "gyuunyuu",
+    "Unit": "Verb 1"
+  },
+  {
+    "Japanese": "出かける",
+    "English": "to go out",
+    "Romaji": " dekakeru",
+    "Unit": "Verb 2"
+  },
+  {
+    "Japanese": "寝る",
+    "English": "to sleep",
+    "Romaji": "neru",
+    "Unit": "Verb 2"
+  },
+  {
+    "Japanese": "見る",
+    "English": "to see",
+    "Romaji": " miru",
+    "Unit": "Verb 2"
+  },
+  {
+    "Japanese": "卵",
+    "English": "egg",
+    "Romaji": "tamago",
+    "Unit": "Verb 2"
+  },
+  {
+    "Japanese": "起きる",
+    "English": "to get up",
+    "Romaji": "okiru",
+    "Unit": "Verb 2"
+  },
+  {
+    "Japanese": "晩ご飯",
+    "English": "dinner",
+    "Romaji": "bangohan",
+    "Unit": "Verb 2"
+  },
+  {
+    "Japanese": "食べる",
+    "English": "to eat",
+    "Romaji": "taberu",
+    "Unit": "Verb 2"
+  },
+  {
+    "Japanese": "朝ご飯",
+    "English": "breakfast",
+    "Romaji": "asagohan",
+    "Unit": "Verb 2"
+  },
+  {
+    "Japanese": "昼ご飯",
+    "English": "lunch",
+    "Romaji": "hirugohan",
+    "Unit": "Verb 2"
+  },
+  {
+    "Japanese": "出迎える",
+    "English": " to greet; to welcome",
+    "Romaji": "demukaeru",
+    "Unit": "Verb 2"
+  },
+  {
+    "Japanese": "中国",
+    "English": "China",
+    "Romaji": "chuugoku",
+    "Unit": "Verb 3"
+  },
+  {
+    "Japanese": "出勤する",
+    "English": "to go to work",
+    "Romaji": "shukkinsuru",
+    "Unit": "Verb 3"
+  },
+  {
+    "Japanese": "ジョギングする",
+    "English": " to jog",
+    "Romaji": "jogingusuru",
+    "Unit": "Verb 3"
+  },
+  {
+    "Japanese": "旅行する",
+    "English": "to travel",
+    "Romaji": "ryokousuru",
+    "Unit": "Verb 3"
+  },
+  {
+    "Japanese": "散歩する",
+    "English": "to go for a walk",
+    "Romaji": "sanposuru",
+    "Unit": "Verb 3"
+  },
+  {
+    "Japanese": "来る",
+    "English": "to come",
+    "Romaji": "kuru",
+    "Unit": "Verb 3"
+  },
+  {
+    "Japanese": "掃除する",
+    "English": " to clean",
+    "Romaji": " soujisuru",
+    "Unit": "Verb 3"
+  },
+  {
+    "Japanese": "泳ぐ",
+    "English": "to swim",
+    "Romaji": "oyogu",
+    "Unit": "Daily Life"
+  },
+  {
+    "Japanese": "遊ぶ",
+    "English": "to play",
+    "Romaji": "asobu",
+    "Unit": "Daily Life"
+  },
+  {
+    "Japanese": "プール",
+    "English": "pool",
+    "Romaji": "pūru",
+    "Unit": "Daily Life"
+  },
+  {
+    "Japanese": "スーパー",
+    "English": "supermarket",
+    "Romaji": "sūpā",
+    "Unit": "Daily Life"
+  },
+  {
+    "Japanese": "働く",
+    "English": "to work",
+    "Romaji": "hataraku",
+    "Unit": "Daily Life"
+  },
+  {
+    "Japanese": "休む",
+    "English": "to rest",
+    "Romaji": "yasumu",
+    "Unit": "Daily Life"
+  },
+  {
+    "Japanese": "カレー",
+    "English": "curry",
+    "Romaji": "karē",
+    "Unit": "Daily Life"
+  },
+  {
+    "Japanese": "勉強する",
+    "English": "to study",
+    "Romaji": "benkyousuru",
+    "Unit": "Daily Life"
+  },
+  {
+    "Japanese": "食堂",
+    "English": "cafeteria",
+    "Romaji": "shokudou",
+    "Unit": "Daily Life"
+  },
+  {
+    "Japanese": "スプーン",
+    "English": "spoon",
+    "Romaji": "supūn",
+    "Unit": "Tableware"
+  },
+  {
+    "Japanese": "箸",
+    "English": "chopsticks",
+    "Romaji": "hashi",
+    "Unit": "Tableware"
+  },
+  {
+    "Japanese": "スープ",
+    "English": "soup",
+    "Romaji": "sūpu",
+    "Unit": "Tableware"
+  },
+  {
+    "Japanese": "ナイフ",
+    "English": "knife",
+    "Romaji": "naifu",
+    "Unit": "Tableware"
+  },
+  {
+    "Japanese": "鶏肉",
+    "English": "chicken meat",
+    "Romaji": "toriniku",
+    "Unit": "Tableware"
+  },
+  {
+    "Japanese": "ラーメン",
+    "English": "Ramen",
+    "Romaji": "rāmen",
+    "Unit": "Tableware"
+  },
+  {
+    "Japanese": "紙",
+    "English": "paper",
+    "Romaji": "kami",
+    "Unit": "Tableware"
+  },
+  {
+    "Japanese": "作る",
+    "English": "to make",
+    "Romaji": "tsukuru",
+    "Unit": "Tableware"
+  },
+  {
+    "Japanese": "切る",
+    "English": "to cut",
+    "Romaji": " kiru",
+    "Unit": "Tableware"
+  },
+  {
+    "Japanese": "はがき",
+    "English": "postcard",
+    "Romaji": "hagaki",
+    "Unit": "Counter"
+  },
+  {
+    "Japanese": "出す",
+    "English": "to take out",
+    "Romaji": "dasu",
+    "Unit": "Counter"
+  },
+  {
+    "Japanese": "兄弟",
+    "English": "siblings",
+    "Romaji": "kyoudai",
+    "Unit": "Counter"
+  },
+  {
+    "Japanese": "動物園",
+    "English": "zoo",
+    "Romaji": "doubutsuen",
+    "Unit": "Counter"
+  },
+  {
+    "Japanese": "蛇",
+    "English": "snake",
+    "Romaji": "hebi",
+    "Unit": "Counter"
+  },
+  {
+    "Japanese": "友達",
+    "English": "friend",
+    "Romaji": "tomodachi",
+    "Unit": ""
+  },
+  {
+    "Japanese": "両親",
+    "English": "parents",
+    "Romaji": "ryoushin",
+    "Unit": ""
+  },
+  {
+    "Japanese": "北京",
+    "English": "Beijing",
+    "Romaji": "pekin",
+    "Unit": ""
+  },
+  {
+    "Japanese": "大阪",
+    "English": "Osaka",
+    "Romaji": "oosaka",
+    "Unit": ""
+  },
+  {
+    "Japanese": "行く",
+    "English": "to go",
+    "Romaji": "iku",
+    "Unit": ""
+  },
+  {
+    "Japanese": "国",
+    "English": "country",
+    "Romaji": "kuni",
+    "Unit": ""
+  },
+  {
+    "Japanese": "帰る",
+    "English": "to return",
+    "Romaji": "kaeru",
+    "Unit": ""
+  },
+  {
+    "Japanese": "美術館",
+    "English": "art museum",
+    "Romaji": "bijutsukan",
+    "Unit": ""
+  },
+  {
+    "Japanese": "イギリス",
+    "English": "England",
+    "Romaji": "igirisu",
+    "Unit": ""
+  },
+  {
+    "Japanese": "フランス",
+    "English": "France",
+    "Romaji": "furansu",
+    "Unit": ""
+  },
+  {
+    "Japanese": "ドイツ",
+    "English": "Germany",
+    "Romaji": "doitsu",
+    "Unit": ""
+  },
+  {
+    "Japanese": "家族",
+    "English": "family",
+    "Romaji": "kazoku",
+    "Unit": ""
+  },
+  {
+    "Japanese": "オーストラリア",
+    "English": "Australia",
+    "Romaji": "ōsutoraria",
+    "Unit": ""
+  },
+  {
+    "Japanese": "バス",
+    "English": "bus",
+    "Romaji": "basu",
+    "Unit": ""
+  },
+  {
+    "Japanese": "電車",
+    "English": "train",
+    "Romaji": "densha",
+    "Unit": ""
+  },
+  {
+    "Japanese": "飛行機",
+    "English": "airplane",
+    "Romaji": "hikouki",
+    "Unit": ""
+  },
+  {
+    "Japanese": "タクシー",
+    "English": "taxi",
+    "Romaji": "takushī",
+    "Unit": ""
+  },
+  {
+    "Japanese": "自転車",
+    "English": "bicycle",
+    "Romaji": "jitensha",
+    "Unit": ""
+  },
+  {
+    "Japanese": "船",
+    "English": "ship",
+    "Romaji": "bune",
+    "Unit": ""
+  },
+  {
+    "Japanese": "地下鉄",
+    "English": "subway",
+    "Romaji": "chikatetsu",
+    "Unit": ""
+  },
+  {
+    "Japanese": "ホテル",
+    "English": "hotel",
+    "Romaji": "hoteru",
+    "Unit": ""
+  },
+  {
+    "Japanese": "空港",
+    "English": "airport",
+    "Romaji": "kuukou",
+    "Unit": ""
+  },
+  {
+    "Japanese": "駅",
+    "English": "station",
+    "Romaji": "eki",
+    "Unit": ""
+  },
+  {
+    "Japanese": "寮",
+    "English": "dormitory",
+    "Romaji": "ryou",
+    "Unit": ""
+  },
+  {
+    "Japanese": "お寺",
+    "English": "temple",
+    "Romaji": "otera",
+    "Unit": ""
+  },
+  {
+    "Japanese": "サッカー",
+    "English": "soccer",
+    "Romaji": "sakkā",
+    "Unit": ""
+  },
+  {
+    "Japanese": "フランス語",
+    "English": "French language",
+    "Romaji": "furansugo",
+    "Unit": ""
+  },
+  {
+    "Japanese": "スポーツ",
+    "English": "sports",
+    "Romaji": "supōtsu",
+    "Unit": ""
+  },
+  {
+    "Japanese": "アルバイト",
+    "English": "part-time job",
+    "Romaji": "arubaito",
+    "Unit": ""
+  },
+  {
+    "Japanese": "授業",
+    "English": "lesson",
+    "Romaji": "jugyou",
+    "Unit": ""
+  },
+  {
+    "Japanese": "山",
+    "English": "mountain",
+    "Romaji": "yama",
+    "Unit": ""
+  },
+  {
+    "Japanese": "登る",
+    "English": "to climb",
+    "Romaji": "noboru",
+    "Unit": ""
+  },
+  {
+    "Japanese": "服",
+    "English": "clothes",
+    "Romaji": "fuku",
+    "Unit": ""
+  },
+  {
+    "Japanese": "いつも",
+    "English": "always",
+    "Romaji": "itsumo",
+    "Unit": ""
+  },
+  {
+    "Japanese": "よく",
+    "English": "often",
+    "Romaji": "yoku",
+    "Unit": ""
+  },
+  {
+    "Japanese": "時々",
+    "English": "sometimes",
+    "Romaji": "tokidoki",
+    "Unit": ""
+  },
+  {
+    "Japanese": "たまに",
+    "English": "occasionally",
+    "Romaji": "tamani",
+    "Unit": ""
+  },
+  {
+    "Japanese": "あまり",
+    "English": "not much",
+    "Romaji": "amari",
+    "Unit": ""
+  },
+  {
+    "Japanese": "ほとんど",
+    "English": "rarely",
+    "Romaji": "hotondo",
+    "Unit": ""
+  },
+  {
+    "Japanese": "全然",
+    "English": "not at all",
+    "Romaji": "zenzen",
+    "Unit": ""
+  },
+  {
+    "Japanese": "歌う",
+    "English": "to sing",
+    "Romaji": "utau",
+    "Unit": ""
+  },
+  {
+    "Japanese": "運転する",
+    "English": "to drive",
+    "Romaji": "untensuru",
+    "Unit": ""
+  },
+  {
+    "Japanese": "歌",
+    "English": "song",
+    "Romaji": "uta",
+    "Unit": ""
+  },
+  {
+    "Japanese": "暗殺教室",
+    "English": "Assassination Classroom",
+    "Romaji": "ansatsukyoushitsu",
+    "Unit": ""
+  },
+  {
+    "Japanese": "字",
+    "English": "character",
+    "Romaji": "ji",
+    "Unit": ""
+  },
+  {
+    "Japanese": "地図",
+    "English": "map",
+    "Romaji": "chizu",
+    "Unit": ""
+  },
+  {
+    "Japanese": "使う",
+    "English": "to use",
+    "Romaji": "tsukau",
+    "Unit": ""
+  },
+  {
+    "Japanese": "分かる",
+    "English": "to understand",
+    "Romaji": "wakaru",
+    "Unit": ""
+  },
+  {
+    "Japanese": "面白い",
+    "English": "interesting",
+    "Romaji": "omoshiroi",
+    "Unit": ""
+  },
+  {
+    "Japanese": "つまらない",
+    "English": "boring",
+    "Romaji": "tsumaranai",
+    "Unit": ""
+  },
+  {
+    "Japanese": "うるさい",
+    "English": "noisy",
+    "Romaji": "urusai",
+    "Unit": ""
+  },
+  {
+    "Japanese": "野菜",
+    "English": "vegetable",
+    "Romaji": "yasai",
+    "Unit": ""
+  },
+  {
+    "Japanese": "サラダ",
+    "English": "salad",
+    "Romaji": "sarada",
+    "Unit": ""
+  },
+  {
+    "Japanese": "まずい",
+    "English": "bad tasting",
+    "Romaji": "mazui",
+    "Unit": ""
+  },
+  {
+    "Japanese": "飴",
+    "English": "candy",
+    "Romaji": "ame",
+    "Unit": ""
+  },
+  {
+    "Japanese": "甘い",
+    "English": "sweet",
+    "Romaji": "amai",
+    "Unit": ""
+  },
+  {
+    "Japanese": "海老",
+    "English": "shrimp",
+    "Romaji": "ebi",
+    "Unit": ""
+  },
+  {
+    "Japanese": "おいしい",
+    "English": "delicious",
+    "Romaji": "oishii",
+    "Unit": ""
+  },
+  {
+    "Japanese": "お菓子",
+    "English": "sweets",
+    "Romaji": "okashi",
+    "Unit": ""
+  },
+  {
+    "Japanese": "テニス",
+    "English": "tennis",
+    "Romaji": "tenisu",
+    "Unit": ""
+  },
+  {
+    "Japanese": "好き",
+    "English": "like",
+    "Romaji": "zuki",
+    "Unit": ""
+  },
+  {
+    "Japanese": "水泳",
+    "English": "swimming",
+    "Romaji": "suiei",
+    "Unit": ""
+  },
+  {
+    "Japanese": "ジョギング",
+    "English": "jogging",
+    "Romaji": "jogingu",
+    "Unit": ""
+  },
+  {
+    "Japanese": "嫌い",
+    "English": "hate",
+    "Romaji": "kirai",
+    "Unit": ""
+  },
+  {
+    "Japanese": "バドミントン",
+    "English": "badminton",
+    "Romaji": "badominton",
+    "Unit": ""
+  },
+  {
+    "Japanese": "ハイキング",
+    "English": "hiking",
+    "Romaji": "haikingu",
+    "Unit": ""
+  },
+  {
+    "Japanese": "野球",
+    "English": "baseball",
+    "Romaji": "yakyuu",
+    "Unit": ""
+  },
+  {
+    "Japanese": "上手",
+    "English": "good at",
+    "Romaji": "jouzu",
+    "Unit": ""
+  },
+  {
+    "Japanese": "バスケ",
+    "English": "basketball",
+    "Romaji": "basuke",
+    "Unit": ""
+  },
+  {
+    "Japanese": "スキー",
+    "English": "skiing",
+    "Romaji": "sukī",
+    "Unit": ""
+  },
+  {
+    "Japanese": "卓球",
+    "English": "table tennis",
+    "Romaji": "takkyuu",
+    "Unit": ""
+  },
+  {
+    "Japanese": "下手",
+    "English": "bad at",
+    "Romaji": "beta",
+    "Unit": ""
+  },
+  {
+    "Japanese": "人気",
+    "English": "popular",
+    "Romaji": "ninki",
+    "Unit": ""
+  },
+  {
+    "Japanese": "太極拳",
+    "English": "Tai Chi",
+    "Romaji": "taikyokuken",
+    "Unit": ""
+  },
+  {
+    "Japanese": "北海道",
+    "English": "Hokkaido",
+    "Romaji": "hokkaidou",
+    "Unit": ""
+  },
+  {
+    "Japanese": "食べ物",
+    "English": "food",
+    "Romaji": "tabemono",
+    "Unit": ""
+  },
+  {
+    "Japanese": "多い",
+    "English": "many",
+    "Romaji": "ooi",
+    "Unit": ""
+  },
+  {
+    "Japanese": "沖縄",
+    "English": "Okinawa",
+    "Romaji": "okinawa",
+    "Unit": ""
+  },
+  {
+    "Japanese": "少ない",
+    "English": "few",
+    "Romaji": "sukunai",
+    "Unit": ""
+  },
+  {
+    "Japanese": "目",
+    "English": "eye",
+    "Romaji": "me",
+    "Unit": ""
+  },
+  {
+    "Japanese": "鼻",
+    "English": "nose",
+    "Romaji": "hana",
+    "Unit": ""
+  },
+  {
+    "Japanese": "手",
+    "English": "hand",
+    "Romaji": "te",
+    "Unit": ""
+  },
+  {
+    "Japanese": "足",
+    "English": "foot",
+    "Romaji": "ashi",
+    "Unit": ""
+  },
+  {
+    "Japanese": "太い",
+    "English": "fat",
+    "Romaji": "futoi",
+    "Unit": ""
+  },
+  {
+    "Japanese": "細い",
+    "English": "thin",
+    "Romaji": "hosoi",
+    "Unit": ""
+  },
+  {
+    "Japanese": "髪",
+    "English": "hair",
+    "Romaji": "kami",
+    "Unit": ""
+  },
+  {
+    "Japanese": "尻尾",
+    "English": "tail (animal)",
+    "Romaji": "shippo",
+    "Unit": ""
+  },
+  {
+    "Japanese": "低い",
+    "English": "low",
+    "Romaji": "hikui",
+    "Unit": ""
+  },
+  {
+    "Japanese": "頭",
+    "English": "head",
+    "Romaji": "atama",
+    "Unit": ""
+  },
+  {
+    "Japanese": "お腹",
+    "English": "stomach",
+    "Romaji": "onaka",
+    "Unit": ""
+  },
+  {
+    "Japanese": "痛い",
+    "English": "painful",
+    "Romaji": "itai",
+    "Unit": ""
+  },
+  {
+    "Japanese": "妹",
+    "English": "younger sister",
+    "Romaji": "imouto",
+    "Unit": ""
+  },
+  {
+    "Japanese": "難しい",
+    "English": "difficult",
+    "Romaji": "muzukashii",
+    "Unit": ""
+  },
+  {
+    "Japanese": "若い",
+    "English": "young",
+    "Romaji": "wakai",
+    "Unit": ""
+  },
+  {
+    "Japanese": "広い",
+    "English": "wide",
+    "Romaji": "hiroi",
+    "Unit": ""
+  },
+  {
+    "Japanese": "速い",
+    "English": "fast",
+    "Romaji": "hayai",
+    "Unit": ""
+  },
+  {
+    "Japanese": "易しい",
+    "English": "easy",
+    "Romaji": "yasashii",
+    "Unit": ""
+  },
+  {
+    "Japanese": "狭い",
+    "English": "narrow",
+    "Romaji": "semai",
+    "Unit": ""
+  },
+  {
+    "Japanese": "遅い",
+    "English": "slow",
+    "Romaji": "osoi",
+    "Unit": ""
+  },
+  {
+    "Japanese": "スカート",
+    "English": "skirt",
+    "Romaji": "sukāto",
+    "Unit": ""
+  },
+  {
+    "Japanese": "イチゴ",
+    "English": "strawberry",
+    "Romaji": "ichigo",
+    "Unit": ""
+  },
+  {
+    "Japanese": "京都",
+    "English": "Kyoto",
+    "Romaji": "kyouto",
+    "Unit": ""
+  },
+  {
+    "Japanese": "果物",
+    "English": "fruit",
+    "Romaji": "kudamono",
+    "Unit": ""
+  },
+  {
+    "Japanese": "スイカ",
+    "English": "watermelon",
+    "Romaji": "suika",
+    "Unit": ""
+  },
+  {
+    "Japanese": "優しい",
+    "English": "gentle",
+    "Romaji": "yasashii",
+    "Unit": ""
+  },
+  {
+    "Japanese": "店",
+    "English": "shop",
+    "Romaji": "ten",
+    "Unit": ""
+  },
+  {
+    "Japanese": "明るい",
+    "English": "bright",
+    "Romaji": "akarui",
+    "Unit": ""
+  },
+  {
+    "Japanese": "都市",
+    "English": "city",
+    "Romaji": "toshi",
+    "Unit": ""
+  },
+  {
+    "Japanese": "ハンサム",
+    "English": "handsome",
+    "Romaji": "hansamu",
+    "Unit": ""
+  },
+  {
+    "Japanese": "暗い",
+    "English": "dark",
+    "Romaji": "kurai",
+    "Unit": ""
+  },
+  {
+    "Japanese": "帽子",
+    "English": "hat",
+    "Romaji": "boushi",
+    "Unit": ""
+  },
+  {
+    "Japanese": "携帯電話",
+    "English": "mobile phone",
+    "Romaji": "keitaidenwa",
+    "Unit": ""
+  },
+  {
+    "Japanese": "クラスメート",
+    "English": "classmate",
+    "Romaji": "kurasumēto",
+    "Unit": ""
+  },
+  {
+    "Japanese": "恋人",
+    "English": "lover",
+    "Romaji": "koibito",
+    "Unit": ""
+  },
+  {
+    "Japanese": "音",
+    "English": "sound",
+    "Romaji": "on",
+    "Unit": ""
+  },
+  {
+    "Japanese": "冷たい",
+    "English": "ice cold",
+    "Romaji": "tsumetai",
+    "Unit": ""
+  },
+  {
+    "Japanese": "教師",
+    "English": "teacher",
+    "Romaji": "kyoushi",
+    "Unit": ""
+  },
+  {
+    "Japanese": "空",
+    "English": "sky",
+    "Romaji": "sora",
+    "Unit": ""
+  },
+  {
+    "Japanese": "飛ぶ",
+    "English": "to fly",
+    "Romaji": "tobu",
+    "Unit": ""
+  },
+  {
+    "Japanese": "走る",
+    "English": "to run",
+    "Romaji": "hashiru",
+    "Unit": ""
+  },
+  {
+    "Japanese": "運動場",
+    "English": "playground",
+    "Romaji": "undoujou",
+    "Unit": ""
+  },
+  {
+    "Japanese": "顔",
+    "English": "face",
+    "Romaji": "kao",
+    "Unit": ""
+  },
+  {
+    "Japanese": "お風呂",
+    "English": "bath",
+    "Romaji": "ofuro",
+    "Unit": ""
+  },
+  {
+    "Japanese": "入る",
+    "English": "to enter",
+    "Romaji": "hairu",
+    "Unit": ""
+  },
+  {
+    "Japanese": "借りる",
+    "English": "to borrow",
+    "Romaji": "kariru",
+    "Unit": ""
+  },
+  {
+    "Japanese": "持つ",
+    "English": "to carry",
+    "Romaji": "motsu",
+    "Unit": ""
+  },
+  {
+    "Japanese": "着物",
+    "English": "kimono",
+    "Romaji": "kimono",
+    "Unit": ""
+  },
+  {
+    "Japanese": "着る",
+    "English": "to wear",
+    "Romaji": "kiru",
+    "Unit": ""
+  },
+  {
+    "Japanese": "左",
+    "English": "left",
+    "Romaji": "hidari",
+    "Unit": ""
+  },
+  {
+    "Japanese": "右",
+    "English": "right",
+    "Romaji": "migi",
+    "Unit": ""
+  },
+  {
+    "Japanese": "東",
+    "English": "East",
+    "Romaji": "higashi",
+    "Unit": ""
+  },
+  {
+    "Japanese": "西",
+    "English": "West",
+    "Romaji": "nishi",
+    "Unit": ""
+  },
+  {
+    "Japanese": "南",
+    "English": "South",
+    "Romaji": "minami",
+    "Unit": ""
+  },
+  {
+    "Japanese": "北",
+    "English": "North",
+    "Romaji": "kita",
+    "Unit": ""
+  },
+  {
+    "Japanese": "道",
+    "English": "street",
+    "Romaji": "michi",
+    "Unit": ""
+  },
+  {
+    "Japanese": "曲がる",
+    "English": "to turn",
+    "Romaji": "magaru",
+    "Unit": ""
+  },
+  {
+    "Japanese": "交差点",
+    "English": "intersection",
+    "Romaji": "kousaten",
+    "Unit": ""
+  },
+  {
+    "Japanese": "信号",
+    "English": "traffic light",
+    "Romaji": "shingou",
+    "Unit": ""
+  },
+  {
+    "Japanese": "座る",
+    "English": "to sit",
+    "Romaji": "suwaru",
+    "Unit": ""
+  },
+  {
+    "Japanese": "角",
+    "English": "corner",
+    "Romaji": "kaku",
+    "Unit": ""
+  },
+  {
+    "Japanese": "ドア",
+    "English": "door",
+    "Romaji": "doa",
+    "Unit": ""
+  },
+  {
+    "Japanese": "開ける",
+    "English": "to open",
+    "Romaji": "akeru",
+    "Unit": ""
+  },
+  {
+    "Japanese": "窓",
+    "English": "window",
+    "Romaji": "mado",
+    "Unit": ""
+  },
+  {
+    "Japanese": "閉める",
+    "English": "to close",
+    "Romaji": "shimeru",
+    "Unit": ""
+  },
+  {
+    "Japanese": "名前",
+    "English": "name",
+    "Romaji": "namae",
+    "Unit": ""
+  },
+  {
+    "Japanese": "待つ",
+    "English": "to wait",
+    "Romaji": "matsu",
+    "Unit": ""
+  },
+  {
+    "Japanese": "写真",
+    "English": "picture",
+    "Romaji": "shashin",
+    "Unit": ""
+  },
+  {
+    "Japanese": "撮る",
+    "English": "to take (a picture)",
+    "Romaji": "toru",
+    "Unit": ""
+  },
+  {
+    "Japanese": "タバコ",
+    "English": "cigarette",
+    "Romaji": "tabako",
+    "Unit": ""
+  },
+  {
+    "Japanese": "吸う",
+    "English": "to breathe in",
+    "Romaji": "suu",
+    "Unit": ""
+  },
+  {
+    "Japanese": "ごみ",
+    "English": "trash",
+    "Romaji": "gomi",
+    "Unit": ""
+  },
+  {
+    "Japanese": "捨てる",
+    "English": "to throw away",
+    "Romaji": "suteru",
+    "Unit": ""
+  },
+  {
+    "Japanese": "置く",
+    "English": "to put down",
+    "Romaji": "oku",
+    "Unit": ""
+  },
+  {
+    "Japanese": "クーラー",
+    "English": "cooler",
+    "Romaji": "kūrā",
+    "Unit": ""
+  },
+  {
+    "Japanese": "つける",
+    "English": "to turn on",
+    "Romaji": "tsukeru",
+    "Unit": ""
+  },
+  {
+    "Japanese": "電気",
+    "English": "light (electricity)",
+    "Romaji": "denki",
+    "Unit": ""
+  },
+  {
+    "Japanese": "消す",
+    "English": "to turn off",
+    "Romaji": "kesu",
+    "Unit": ""
+  },
+  {
+    "Japanese": "電話",
+    "English": "phone",
+    "Romaji": "denwa",
+    "Unit": ""
+  },
+  {
+    "Japanese": "止める",
+    "English": "to stop",
+    "Romaji": "tomeru",
+    "Unit": ""
+  },
+  {
+    "Japanese": "歯",
+    "English": "teeth",
+    "Romaji": "ha",
+    "Unit": ""
+  },
+  {
+    "Japanese": "磨く",
+    "English": "to polish",
+    "Romaji": "migaku",
+    "Unit": ""
+  },
+  {
+    "Japanese": "話す",
+    "English": "to talk",
+    "Romaji": "hanasu",
+    "Unit": ""
+  },
+  {
+    "Japanese": "教える",
+    "English": "to teach",
+    "Romaji": "oshieru",
+    "Unit": ""
+  },
+  {
+    "Japanese": "通う",
+    "English": "to go back and forth",
+    "Romaji": "kayou",
+    "Unit": ""
+  },
+  {
+    "Japanese": "降る",
+    "English": "to fall (rain/snow)",
+    "Romaji": "furu",
+    "Unit": ""
+  },
+  {
+    "Japanese": "桜",
+    "English": "cherry blossom",
+    "Romaji": "sakura",
+    "Unit": ""
+  },
+  {
+    "Japanese": "知る",
+    "English": "to know",
+    "Romaji": "shiru",
+    "Unit": ""
+  },
+  {
+    "Japanese": "眼鏡",
+    "English": "glasses",
+    "Romaji": "megane",
+    "Unit": ""
+  },
+  {
+    "Japanese": "かける",
+    "English": "to make a call",
+    "Romaji": "kakeru",
+    "Unit": ""
+  },
+  {
+    "Japanese": "マスク",
+    "English": "mask",
+    "Romaji": "masuku",
+    "Unit": ""
+  },
+  {
+    "Japanese": "かぶる",
+    "English": "to put on (hat)",
+    "Romaji": "kaburu",
+    "Unit": ""
+  },
+  {
+    "Japanese": "結婚する",
+    "English": "to marry",
+    "Romaji": "kekkonsuru",
+    "Unit": ""
+  },
+  {
+    "Japanese": "始まる",
+    "English": "to start",
+    "Romaji": "hajimaru",
+    "Unit": ""
+  },
+  {
+    "Japanese": "住む",
+    "English": "to live",
+    "Romaji": "sumu",
+    "Unit": ""
+  },
+  {
+    "Japanese": "廊下",
+    "English": "hallway",
+    "Romaji": "rouka",
+    "Unit": ""
+  },
+  {
+    "Japanese": "ページ",
+    "English": "page",
+    "Romaji": "pēji",
+    "Unit": ""
+  },
+  {
+    "Japanese": "貼る",
+    "English": "to stick",
+    "Romaji": "haru",
+    "Unit": ""
+  },
+  {
+    "Japanese": "乗る",
+    "English": "to ride",
+    "Romaji": "noru",
+    "Unit": ""
+  },
+  {
+    "Japanese": "切手",
+    "English": "stamp",
+    "Romaji": "kitte",
+    "Unit": ""
+  },
+  {
+    "Japanese": "脱ぐ",
+    "English": "to take off",
+    "Romaji": "nugu",
+    "Unit": ""
+  },
+  {
+    "Japanese": "平仮名",
+    "English": "hiragana",
+    "Romaji": "hiragana",
+    "Unit": ""
+  },
+  {
+    "Japanese": "片仮名",
+    "English": "katakana",
+    "Romaji": "katakana",
+    "Unit": ""
+  },
+  {
+    "Japanese": "覚える",
+    "English": "to remember",
+    "Romaji": "oboeru",
+    "Unit": ""
+  },
+  {
+    "Japanese": "スーツ",
+    "English": "suit",
+    "Romaji": "sūtsu",
+    "Unit": ""
+  },
+  {
+    "Japanese": "水",
+    "English": "water",
+    "Romaji": "mizu",
+    "Unit": ""
+  },
+  {
+    "Japanese": "相談する",
+    "English": "to discuss",
+    "Romaji": "soudansuru",
+    "Unit": ""
+  },
+  {
+    "Japanese": "渡す",
+    "English": "to deliver",
+    "Romaji": "watasu",
+    "Unit": ""
+  },
+  {
+    "Japanese": "ケーキ",
+    "English": "cake",
+    "Romaji": "kēki",
+    "Unit": ""
+  },
+  {
+    "Japanese": "泣く",
+    "English": "to cry",
+    "Romaji": "naku",
+    "Unit": ""
+  },
+  {
+    "Japanese": "笑う",
+    "English": "to laugh/smile",
+    "Romaji": "warau",
+    "Unit": ""
+  },
+  {
+    "Japanese": "叫ぶ",
+    "English": "to shout",
+    "Romaji": "sakebu",
+    "Unit": ""
+  },
+  {
+    "Japanese": "夢",
+    "English": "dream",
+    "Romaji": "yume",
+    "Unit": ""
+  },
+  {
+    "Japanese": "赤ちゃん",
+    "English": "baby",
+    "Romaji": "akachan",
+    "Unit": ""
+  },
+  {
+    "Japanese": "八百屋",
+    "English": "greengrocer",
+    "Romaji": "yaoya",
+    "Unit": ""
+  },
+  {
+    "Japanese": "アパート",
+    "English": "apartment",
+    "Romaji": "apāto",
+    "Unit": ""
+  },
+  {
+    "Japanese": "飼う",
+    "English": "to raise",
+    "Romaji": "kau",
+    "Unit": ""
+  },
+  {
+    "Japanese": "パスポート",
+    "English": "passport",
+    "Romaji": "pasupōto",
+    "Unit": ""
+  }
+]
