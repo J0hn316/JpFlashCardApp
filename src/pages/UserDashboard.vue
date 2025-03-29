@@ -1,7 +1,10 @@
 <template>
-  <div class="p-6 text-white">
-    <h1 class="text-2xl mb-4">Welcome, {{ user.name }}!</h1>
-    <p>High Score: {{ score }}</p>
+  <div class="min-h-screen flex items-center justify-center bg-gray-900">
+    <div class="bg-white p-6 rounded shadow-md w-80 text-blue-500">
+      <h1 class="text-2xl mb-4">Dashboard Page</h1>
+      <p>Welcome {{ user.name }}</p>
+      <p>High Score: {{ score }}</p>
+    </div>
   </div>
 </template>
 

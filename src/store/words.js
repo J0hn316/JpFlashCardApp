@@ -1,26 +1,18 @@
-import words from '../assets/json/jpwordlist.json'
+import wordData from '@/assets/json/newJPWordList.json'
 
 export default {
-  namespaced: true,
   state: () => ({
-    wordList: words,
-    missedWords: [],
+    allWords: wordData,
+    currentUnit: null,
   }),
-  mutations: {
-    ADD_WORD(state, word) {
-      state.wordList.push(word)
-    },
-    REMOVE_WORD(state, id) {
-      state.wordList.splice(id, 1)
-    },
-    ADD_MISSED(state, word) {
-      state.missedWords.push(word)
+  getters: {
+    getWordsByUnit: (state) => (unit) => {
+      state.allWords.filter((word) => word.Unit.trim() === unit.trim())
     },
   },
-  actions: {
-    fetchWords() {
-      // could use axios if using API
-      console.log('Test')
+  mutations: {
+    setCurrentUnit(state, unit) {
+      state.currentUnit = unit
     },
   },
 }

@@ -7,7 +7,7 @@ import ManageWords from '@/pages/ManageWords.vue'
 import NotFound from '@/pages/NotFound.vue'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(),
   routes: [
     {
       path: '/',

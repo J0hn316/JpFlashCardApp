@@ -1,5 +1,5 @@
 <template>
-  <head>
-    <title>My App</title>
-  </head>
+  <div>
+    <h1>Quiz page</h1>
+  </div>
 </template>

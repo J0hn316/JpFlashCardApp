@@ -17,18 +17,21 @@
 import { ref } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
+import { useToast } from 'vue-toastification'
 
 const username = ref('')
 const store = useStore()
 const router = useRouter()
+const toast = useToast()
 
 const handleLogin = async () => {
   try {
-    const res = await store.dispatch('auth/login', { username: username.value })
+    const res = await store.dispatch('login', { username: username.value })
     if (res) {
       router.push('/dashboard')
     }
   } catch (error) {
+    toast.error('User name required')
     console.error(error)
   }
 }

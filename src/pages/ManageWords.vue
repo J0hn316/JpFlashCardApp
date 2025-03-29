@@ -1,5 +1,5 @@
 <template>
-  <head>
-    <h1>Mange Words</h1>
-  </head>
+  <div>
+    <h1>Mange Words page</h1>
+  </div>
 </template>
