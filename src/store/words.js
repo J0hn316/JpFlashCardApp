@@ -7,7 +7,7 @@ export default {
   }),
   getters: {
     getWordsByUnit: (state) => (unit) => {
-      state.allWords.filter((word) => word.Unit.trim() === unit.trim())
+      return state.allWords.filter((word) => word.Unit.trim() === unit.trim())
     },
   },
   mutations: {
