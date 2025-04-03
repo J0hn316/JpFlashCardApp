@@ -5,14 +5,16 @@
       <p>✅ Correct: {{ correctCount }}</p>
       <p>❌ Missed: {{ missedCount }}</p>
     </div>
-    <div class="flashcard-list">
+    <div class="flashcard-list flex justify-center">
       <Flashcard
-        v-for="(word, index) in words"
-        :key="index"
-        :word="word"
+        v-if="currentCard"
+        :word="currentCard"
         @correct="handleCorrect"
         @incorrect="handleIncorrect"
       />
+      <p v-else class="text-lg font-semibold text-center text-green-600">
+        🎉 Quiz Complete! You got {{ correctCount }} correct and {{ missedCount }} wrong.
+      </p>
     </div>
   </div>
 </template>
@@ -35,12 +37,31 @@ const words = computed(() => {
 const correctCount = ref(0)
 const missedCount = ref(0)
 
+// Track which card the user is currently on
+const currentIndex = ref(0)
+
+const currentCard = computed(() => {
+  return words.value[currentIndex.value] || null
+})
+
+// Handlers to process answers and move to the next card
 const handleCorrect = () => {
   correctCount.value++
+  nextCard()
 }
 
 const handleIncorrect = () => {
   missedCount.value++
+  nextCard()
+}
+
+const nextCard = () => {
+  if (currentIndex.value < words.value.length - 1) {
+    currentIndex.value++
+  } else {
+    // Optionally show a "Quiz Finished" message later
+    console.log('🎉 Quiz complete!')
+  }
 }
 </script>
 

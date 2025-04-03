@@ -17,6 +17,9 @@ coverage
 /cypress/videos/
 /cypress/screenshots/
 
+# My notes file
+Notes.js
+
 # Editor directories and files
 .vscode
 .vscode/*
