@@ -7,12 +7,12 @@
     </div>
     <div class="flashcard-list flex justify-center">
       <Flashcard
-        v-if="currentCard"
+        v-if="currentCard && !quizComplete"
         :word="currentCard"
         @correct="handleCorrect"
         @incorrect="handleIncorrect"
       />
-      <p v-else class="text-lg font-semibold text-center text-green-600">
+      <p v-else-if="quizComplete" class="text-lg font-semibold text-center text-green-600 mt-4">
         🎉 Quiz Complete! You got {{ correctCount }} correct and {{ missedCount }} wrong.
       </p>
     </div>
@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { useStore } from 'vuex'
 import Flashcard from './FlashCard.vue'
 
@@ -39,6 +39,9 @@ const missedCount = ref(0)
 
 // Track which card the user is currently on
 const currentIndex = ref(0)
+
+// Flag to track if the quiz is complete
+const quizComplete = ref(false)
 
 const currentCard = computed(() => {
   return words.value[currentIndex.value] || null
@@ -59,10 +62,18 @@ const nextCard = () => {
   if (currentIndex.value < words.value.length - 1) {
     currentIndex.value++
   } else {
-    // Optionally show a "Quiz Finished" message later
+    quizComplete.value = true
     console.log('🎉 Quiz complete!')
   }
 }
+
+// Watch for unit change to reset quiz state
+watch(currentUnit, () => {
+  correctCount.value = 0
+  missedCount.value = 0
+  currentIndex.value = 0
+  quizComplete.value = false
+})
 </script>
 
 <style scoped>

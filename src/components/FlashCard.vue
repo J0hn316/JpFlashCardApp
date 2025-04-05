@@ -1,12 +1,13 @@
 <template>
   <div class="w-64 h-40 perspective cursor-pointer" @click="toggleFlip">
     <div
-      class="relative w-full h-full transition-transform duration-500 transform"
+      class="relative w-full h-full transition-transform duration-500 transform-style preserve-3d"
       :class="{ 'rotate-y-180': isFlipped }"
     >
       <!-- Front (Japanese side) -->
       <div
-        class="absolute w-full h-full bg-white text-black rounded-lg backface-hidden flex flex-col items-center justify-center border-2 border-blue-400"
+        class="absolute w-full h-full bg-white text-black rounded-lg flex flex-col items-center justify-center border-2 border-blue-400"
+        style="backface-visibility: hidden"
       >
         <div class="text-center">
           <p class="text-xl font-bold">{{ word.JP.Japanese }}</p>
@@ -16,7 +17,8 @@
 
       <!-- Back (English side) -->
       <div
-        class="absolute w-full h-full bg-blue-100 text-black rounded-lg backface-hidden transform rotate-y-180 flex flex-col items-center justify-center border-2 border-blue-400 space-y-2"
+        class="absolute w-full h-full bg-blue-100 text-black rounded-lg transform rotate-y-180 flex flex-col items-center justify-center border-2 border-blue-400 space-y-2"
+        style="backface-visibility: hidden"
       >
         <p class="text-xl font-semibold">{{ word.English }}</p>
 
@@ -40,9 +42,9 @@
 </template>
 
 <script setup>
-import { ref, defineProps, defineEmits } from 'vue'
+import { ref, watch, defineProps, defineEmits } from 'vue'
 
-defineProps({
+const props = defineProps({
   word: Object,
 })
 
@@ -54,12 +56,6 @@ const toggleFlip = () => {
   isFlipped.value = !isFlipped.value
 }
 
-const autoFlipBack = () => {
-  setTimeout(() => {
-    isFlipped.value = false
-  }, 1200) // 1.2 seconds
-}
-
 const markCorrect = () => {
   emit('correct')
   autoFlipBack()
@@ -68,12 +64,30 @@ const markIncorrect = () => {
   emit('incorrect')
   autoFlipBack()
 }
+
+const autoFlipBack = () => {
+  setTimeout(() => {
+    isFlipped.value = false
+  }, 1200)
+}
+
+watch(
+  () => props.word,
+  () => {
+    isFlipped.value = false
+  },
+)
 </script>
 
 <style scoped>
 .perspective {
   perspective: 1000px;
 }
+
+.transform-style {
+  transform-style: preserve-3d;
+}
+
 .backface-hidden {
   backface-visibility: hidden;
 }
