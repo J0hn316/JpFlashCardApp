@@ -26,7 +26,7 @@ const toast = useToast()
 
 const handleLogin = async () => {
   try {
-    const res = await store.dispatch('login', { username: username.value })
+    const res = await store.dispatch('auth/login', { username: username.value })
     if (res) {
       router.push('/dashboard')
     }

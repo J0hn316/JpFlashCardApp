@@ -1,14 +1,16 @@
 export default {
-  namespace: true,
+  namespaced: true,
   state: () => ({
-    user: null,
+    user: JSON.parse(localStorage.getItem('user')) || null,
   }),
   mutations: {
     SET_USER(state, user) {
       state.user = user
+      localStorage.setItem('user', JSON.stringify(user)) // save user to local storage
     },
     LOGOUT(state) {
       state.user = null
+      localStorage.removeItem('user') // remove user from local storage
     },
   },
   actions: {
