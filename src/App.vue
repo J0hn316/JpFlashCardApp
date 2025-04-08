@@ -1,9 +1,16 @@
 <template>
-  <div id="app">
+  <div>
+    <AppNavbar v-if="showNavbar" />
     <RouterView />
   </div>
 </template>
 
 <script setup>
-import { RouterView } from 'vue-router'
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+import AppNavbar from './components/AppNavbar.vue'
+
+const route = useRoute()
+
+const showNavbar = computed(() => route.path !== '/')
 </script>

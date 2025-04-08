@@ -16,11 +16,15 @@ export default {
       state.score = 0
       state.totalQuestions = 0
     },
-    SAVE_HIGH_SCORE(state, { unit, user, scorePercent }) {
+    SAVE_HIGH_SCORE(state, { unit, username, percentage }) {
       if (!state.highScores[unit]) {
         state.highScores[unit] = {}
       }
-      state.highScores[unit][user] = scorePercent
+      const existingScore = state.highScores[unit][username] || 0
+
+      if (percentage > existingScore) {
+        state.highScores[unit][username] = percentage
+      }
     },
   },
   actions: {
@@ -36,9 +40,10 @@ export default {
     saveHighScore({ commit, rootState, state }) {
       const unit = rootState.words.currentUnit
       const user = rootState.auth.user?.name || 'Unknown'
-      if (state.totalQuestions > 0) {
-        const scorePercent = Math.round((state.score / state.totalQuestions) * 100) + '%'
-        commit('SAVE_HIGH_SCORE', { unit, user, scorePercent })
+
+      if (user && unit && state.totalQuestions > 0) {
+        const percentage = Math.round((state.score / state.totalQuestions) * 100)
+        commit('SAVE_HIGH_SCORE', { unit, username: user, percentage })
       }
     },
   },

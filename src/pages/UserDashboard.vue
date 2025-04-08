@@ -6,13 +6,13 @@
       <p v-else class="text-red-600">⚠️ No user logged in.</p>
 
       <div class="mt-4">
-        <h2 class="font-semibold text-lg">🏆 High Scores</h2>
+        <h2 class="font-semibold text-lg mb-2">🏆 High Scores</h2>
         <ul v-if="Object.keys(highScores).length">
-          <li v-for="(unitScores, unit) in highScores" :key="unit" class="mb-2">
+          <li v-for="(userScores, unit) in highScores" :key="unit" class="mb-2">
             <span class="font-bold">{{ unit }} Quiz</span>
-            <ul class="pl-4 list-disc">
-              <li v-for="(score, username) in unitScores" :key="username">
-                {{ username }} - {{ score }}
+            <ul class="mt-2">
+              <li v-for="(score, username) in userScores" :key="username">
+                {{ username }} - {{ score }}%
               </li>
             </ul>
           </li>

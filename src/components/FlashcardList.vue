@@ -25,6 +25,13 @@
           </li>
         </ul>
       </div>
+      <!-- Play Again Button -->
+      <button
+        @click="retryQuiz"
+        class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+      >
+        Play Again? 🤔
+      </button>
     </div>
     <button
       @click="goToDashboard"
@@ -87,6 +94,15 @@ const nextCard = () => {
   }
 }
 
+const retryQuiz = () => {
+  correctCount.value = 0
+  missedCount.value = 0
+  missedWords.value = []
+  currentIndex.value = 0
+  quizComplete.value = false
+  store.dispatch('quiz/resetQuiz')
+}
+
 // Watch for unit change to reset quiz state
 watch(currentUnit, () => {
   correctCount.value = 0
@@ -95,6 +111,13 @@ watch(currentUnit, () => {
   quizComplete.value = false
   missedWords.value = []
   store.dispatch('quiz/resetQuiz')
+})
+
+// Save high score when quiz is complete
+watch(quizComplete, (newVal) => {
+  if (newVal) {
+    store.dispatch('quiz/saveHighScore')
+  }
 })
 
 const goToDashboard = () => {
