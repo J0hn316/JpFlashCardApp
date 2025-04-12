@@ -1,44 +1,62 @@
 <template>
-  <div class="p-4 space-y-4">
-    <div class="score-panel bg-gray-100 p-4 rounded shadow">
-      <p class="font-semibold">Score</p>
-      <p>✅ Correct: {{ correctCount }}</p>
-      <p>❌ Missed: {{ missedCount }}</p>
-    </div>
+  <div class="p-4 space-y-6 max-w-3xl mx-auto">
+    <!-- Score Panel -->
+    <Transition name="fade-slide">
+      <div v-if="!quizComplete" class="score-panel">
+        <p class="font-semibold text-lg">score</p>
+        <p class="text-green-600 dark:text-green-400">✅ Correct: {{ correctCount }}</p>
+        <p class="text-red-500 dark:text-red-400">❌ Incorrect: {{ missedCount }}</p>
+      </div>
+    </Transition>
 
-    <div class="flashcard-list flex justify-center">
+    <!-- Flashcard Display -->
+    <div class="flashcard-list" v-if="!quizComplete">
       <Flashcard
-        v-if="currentCard && !quizComplete"
+        v-if="currentCard"
         :word="currentCard"
         @correct="handleCorrect"
         @incorrect="handleIncorrect"
       />
     </div>
-    <div v-if="quizComplete" class="mt-6 text-center">
-      <h2 class="text-xl font-bold text-green-600 mb-2">You have completed the quiz!</h2>
-      <p>You got {{ correctCount }} correct and {{ missedCount }} incorrect.</p>
-      <div v-if="missedWords.length > 0" class="mt-4">
-        <h3 class="font-semibold mb-2">❌ Missed Words:</h3>
-        <ul class="list-disc list-inside text-red-600">
-          <li v-for="(word, index) in missedWords" :key="index">
-            {{ word.JP.Japanese }} ({{ word.English }})
-          </li>
-        </ul>
+
+    <!-- Quiz Complete Message -->
+    <Transition name="fade-slide" appear>
+      <div v-if="quizComplete" class="quiz-complete">
+        <h2 class="text-xl font-bold mb-2">You've completed the quiz!</h2>
+        <p class="mb-2">You got {{ correctCount }} correct and {{ missedCount }} incorrect.</p>
+
+        <!-- Missed Words List -->
+        <div v-if="missedWords.length > 0" class="mt-4 text-red-600 dark:text-red-400">
+          <h3 class="font-semibold mb-2">
+            <span v-if="missedWords.length === 1">You missed the following word:</span>
+            <span v-else>You missed the following words:</span>
+          </h3>
+          <TransitionGroup name="fade-in-word" tag="ul" class="list-disc list-inside space-y-1">
+            <li v-for="(word, index) in missedWords" :key="word.JP.Japanese + index">
+              {{ word.JP.Japanese }} ({{ word.English }})
+            </li>
+          </TransitionGroup>
+        </div>
+
+        <!-- Buttons -->
+        <Transition name="fade-slide" appear>
+          <div class="mt-6 flex flex-col sm:flex-row justify-center gap-4">
+            <button
+              @click="retryQuiz"
+              class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition"
+            >
+              Play again 🤔
+            </button>
+            <button
+              @click="goToDashboard"
+              class="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600 transition"
+            >
+              Go to Dashboard
+            </button>
+          </div>
+        </Transition>
       </div>
-      <!-- Play Again Button -->
-      <button
-        @click="retryQuiz"
-        class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-      >
-        Play Again? 🤔
-      </button>
-    </div>
-    <button
-      @click="goToDashboard"
-      class="mt-6 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-    >
-      Go to Dashboard
-    </button>
+    </Transition>
   </div>
 </template>
 
@@ -125,11 +143,44 @@ const goToDashboard = () => {
 }
 </script>
 
-<style scoped>
+<style scoped lang="postcss">
 .flashcard-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
+  @apply flex justify-center items-center min-h-[12rem] transition-all duration-300 ease-in-out;
+}
+
+.score-panel {
+  @apply bg-gray-100 dark:bg-gray-800 dark:text-white p-4 rounded shadow text-center space-y-1;
+}
+
+.quiz-complete {
+  @apply text-center text-black dark:text-white mt-8 text-base;
+}
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition:
+    opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.fade-slide-enter-from,
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateY(12px);
+}
+.fade-slide-enter-to,
+.fade-slide-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-word-enter-active {
+  transition: all 0.4s ease;
+}
+.fade-in-word-enter-from {
+  opacity: 0;
+  transform: translateX(-8px);
+}
+.fade-in-word-enter-to {
+  opacity: 1;
+  transform: translateX(0);
 }
 </style>

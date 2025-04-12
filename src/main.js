@@ -1,4 +1,4 @@
-import './assets/main.css'
+import './assets/main.postcss'
 import Toast from 'vue-toastification'
 import 'vue-toastification/dist/index.css'
 

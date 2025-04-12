@@ -1,24 +1,20 @@
 <template>
   <div class="w-64 h-40 perspective cursor-pointer" @click="toggleFlip">
     <div
-      class="relative w-full h-full transition-transform duration-500 transform-style preserve-3d"
+      class="relative w-full h-full card-animated preserve-3d"
       :class="{ 'rotate-y-180': isFlipped }"
     >
       <!-- Front (Japanese side) -->
-      <div
-        class="absolute w-full h-full bg-white text-black rounded-lg flex flex-col items-center justify-center border-2 border-blue-400"
-        style="backface-visibility: hidden"
-      >
+      <div class="card-face">
         <div class="text-center">
           <p class="text-xl font-bold">{{ word.JP.Japanese }}</p>
-          <p class="text-sm text-gray-500">{{ word.JP.Romaji }}</p>
+          <p class="text-sm text-gray-500 dark:text-gray-300">{{ word.JP.Romaji }}</p>
         </div>
       </div>
 
       <!-- Back (English side) -->
       <div
-        class="absolute w-full h-full bg-blue-100 text-black rounded-lg transform rotate-y-180 flex flex-col items-center justify-center border-2 border-blue-400 space-y-2"
-        style="backface-visibility: hidden"
+        class="card-face back-face transform rotate-y-180 bg-blue-100 text-black dark:bg-blue-900 dark:text-white"
       >
         <p class="text-xl font-semibold">{{ word.English }}</p>
 
@@ -79,9 +75,13 @@ watch(
 )
 </script>
 
-<style scoped>
+<style scoped lang="postcss">
 .perspective {
   perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
 }
 
 .transform-style {
@@ -93,5 +93,29 @@ watch(
 }
 .rotate-y-180 {
   transform: rotateY(180deg);
+}
+
+/* Front of card (default style) */
+.card-face {
+  @apply absolute w-full h-full flex flex-col items-center justify-center rounded-lg border-2 border-blue-400 bg-white text-black;
+  backface-visibility: hidden;
+}
+
+/* Back of card */
+.back-face {
+  @apply bg-blue-100 text-black dark:bg-blue-900 dark:text-white;
+}
+
+/* Optional: reset override in dark mode just for front face */
+.dark .card-face:not(.back-face) {
+  @apply bg-gray-800 text-white border-blue-300;
+}
+
+.card-animated {
+  @apply transition-transform duration-500 ease-in-out;
+}
+
+.card-animated.rotate-y-180 {
+  transform: rotateY(180deg) scale(1.05);
 }
 </style>

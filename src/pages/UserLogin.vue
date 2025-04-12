@@ -1,12 +1,17 @@
 <template>
-  <div class="min-h-screen flex items-center justify-center bg-gray-900">
-    <form @submit.prevent="handleLogin" class="bg-white p-6 rounded shadow-md w-80">
+  <div
+    class="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900 transition-colors"
+  >
+    <form
+      @submit.prevent="handleLogin"
+      class="bg-white p-6 rounded shadow-md w-80 dark:bg-gray-800 dark:text-white"
+    >
       <h2 class="text-xl mb-4">Login</h2>
       <input
         v-model="username"
         type="text"
         placeholder="Username"
-        class="w-full p-2 border rounded"
+        class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600"
       />
       <button class="mt-4 bg-blue-600 text-white p-2 w-full">Login</button>
     </form>

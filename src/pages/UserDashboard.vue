@@ -1,12 +1,14 @@
 <template>
-  <div class="min-h-screen flex items-center justify-center bg-gray-900">
-    <div class="bg-white p-6 rounded shadow-md w-96 text-blue-500">
+  <div class="min-h-screen flex items-center justify-center dark:bg-gray-900 transition-colors">
+    <div
+      class="bg-white dark:bg-gray-800 text-blue-500 dark:text-blue-300 p-6 rounded shadow-md w-96"
+    >
       <h1 class="text-2xl mb-4">Dashboard Page</h1>
       <p v-if="user">Welcome {{ user.name }}</p>
-      <p v-else class="text-red-600">⚠️ No user logged in.</p>
+      <p v-else class="text-red-600 dark:text-red-400">⚠️ No user logged in.</p>
 
       <div class="mt-4">
-        <h2 class="font-semibold text-lg mb-2">🏆 High Scores</h2>
+        <h2 class="font-semibold text-lg text-blue-600 dark:text-blue-400">🏆 High Scores</h2>
         <ul v-if="Object.keys(highScores).length">
           <li v-for="(userScores, unit) in highScores" :key="unit" class="mb-2">
             <span class="font-bold">{{ unit }} Quiz</span>
@@ -17,7 +19,7 @@
             </ul>
           </li>
         </ul>
-        <p v-else>No high scores yet!</p>
+        <p v-else class="text-gray-600 dark:text-gray-300">No high scores yet!</p>
       </div>
       <button
         @click="goToQuiz"

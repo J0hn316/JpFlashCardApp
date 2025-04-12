@@ -1,5 +1,7 @@
 <template>
-  <div class="p-4 max-w-4xl mx-auto">
+  <div
+    class="p-4 max-w-4xl mx-auto bg-white dark:bg-gray-900 text-black dark:text-white min-h-screen"
+  >
     <h1 class="text-2xl font-bold mb-4">Flashcard Quiz</h1>
     <UnitSelector />
     <div v-if="currentUnit">
