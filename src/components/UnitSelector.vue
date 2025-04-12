@@ -31,7 +31,5 @@ const availableUnits = computed(() => {
 // When a unit is selected, set it in the Vuex Store
 const selectUnit = (unit) => {
   store.commit('words/setCurrentUnit', unit)
-  console.log('Selected unit:', unit)
-  console.log('Current unit in store:', store.state.words.currentUnit)
 }
 </script>

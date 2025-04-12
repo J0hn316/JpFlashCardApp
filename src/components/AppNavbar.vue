@@ -5,6 +5,12 @@
       <RouterLink to="/dashboard" class="hover:underline">Dashboard</RouterLink>
       <RouterLink to="/quiz" class="hover:underline">Quiz</RouterLink>
       <RouterLink to="/manage-words" class="hover:underline">Manage</RouterLink>
+      <button
+        @click="isDark = !isDark"
+        class="px-3 py-1 rounded border dark:border-gray-400 border-gray-800 text-sm"
+      >
+        {{ isDark ? '🌙 Dark Mode' : '☀️ Light Mode' }}
+      </button>
       <button @click="logout" class="hover:underline">Logout</button>
     </div>
   </nav>
@@ -13,9 +19,11 @@
 <script setup>
 import { useStore } from 'vuex'
 import { useRouter, RouterLink } from 'vue-router'
+import { useDarkMode } from '@/utils/UseDarkMode'
 
 const store = useStore()
 const router = useRouter()
+const { isDark } = useDarkMode()
 
 const logout = () => {
   store.dispatch('auth/logout')
