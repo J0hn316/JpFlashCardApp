@@ -1,127 +1,185 @@
 <template>
-  <div class="min-h-screen bg-gray-100 p-6">
-    <div class="max-w-5xl mx-auto bg-white p-6 rounded shadow">
-      <h1 class="text-2xl font-bold text-blue-600 mb-4">Manage Words</h1>
-
-      <!-- Unit Selector -->
-      <div class="mb-4">
-        <label for="unitSelect" class="block text-sm font-semibold text-gray-700 mb-1">
-          Select a unit:
-        </label>
-        <select
-          id="unitSelect"
-          v-model="selectedUnit"
-          @change="setUnit"
-          class="w-full border px-3 py-2 rounded shadow-sm"
-        >
-          <option disabled value="">-- Select a unit --</option>
-          <option v-for="unit in availableUnits" :key="unit" :value="unit">
-            {{ unit }}
-          </option>
-        </select>
-      </div>
-
-      <!-- Words Table -->
-      <table class="w-full text-left border-collapse table-auto">
-        <thead>
-          <tr class="bg-blue-100 text-blue-800">
-            <th class="p-2 border-b">English</th>
-            <th class="p-2 border-b">Japanese</th>
-            <th class="p-2 border-b">Romaji</th>
-            <th class="p-2 border-b">Unit</th>
-            <th class="p-2 border-b">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            v-for="(word, index) in paginatedWords"
-            :key="index"
-            class="hover:bg-blue-50 transition"
+  <GlobalLayout>
+    <div class="min-h-screen p-6 dark:bg-gray-900 transition-colors">
+      <div
+        class="max-w-5xl mx-auto p-6 bg-gray-400 dark:bg-gray-800 rounded shadow transition-colors"
+      >
+        <h1 class="text-2xl font-bold mb-4 text-blue-600 dark:text-blue-300">Manage Words</h1>
+        <!-- Unit Selector -->
+        <div class="mb-4">
+          <label for="unitSelect" class="block text-sm font-semibold mb-1 dark:text-white">
+            Select a unit:
+          </label>
+          <select
+            id="unitSelect"
+            v-model="selectedUnit"
+            @change="setUnit"
+            class="w-full border px-3 py-2 rounded shadow-sm dark:bg-gray-700 dark:text-white"
           >
-            <td class="p-2 border-b">{{ word.English }}</td>
-            <td class="p-2 border-b">{{ word.JP.Japanese }}</td>
-            <td class="p-2 border-b">{{ word.JP.Romaji }}</td>
-            <td class="p-2 border-b">{{ word.Unit }}</td>
-            <td class="p-2 border-b">
+            <option disabled value="">-- Select a unit --</option>
+            <option v-for="unit in availableUnits" :key="unit" :value="unit">
+              {{ unit }}
+            </option>
+          </select>
+        </div>
+        <!-- Loading Spinner -->
+        <div v-if="isLoading" class="flex justify-center items-center p-4">
+          <div
+            class="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"
+          ></div>
+        </div>
+        <!-- Words Table -->
+        <table class="w-full text-left border-collapse table-auto transition-colors">
+          <thead>
+            <tr class="bg-blue-100 text-blue-800 dark:bg-gray-700 dark:text-blue-200">
+              <th class="p-2 border-b font-bold text-center">English</th>
+              <th class="p-2 border-b font-bold text-center">Japanese</th>
+              <th class="p-2 border-b font-bold text-center">Romaji</th>
+              <th class="p-2 border-b font-bold text-center">Unit</th>
+              <th class="p-2 border-b font-bold text-center">Actions</th>
+            </tr>
+          </thead>
+          <TransitionGroup name="fade-table" tag="tbody">
+            <tr
+              v-for="(word, index) in paginatedWords"
+              :key="index"
+              :class="[
+                'hover:bg-blue-50 dark:hover:bg-gray-600',
+                'transition',
+                isRecentlyUpdated(word) ? 'bg-green-100 dark:bg-green-800/60' : '',
+              ]"
+            >
+              <td class="p-2 border-b text-center">{{ word.English }}</td>
+              <td class="p-2 border-b text-center">{{ word.JP.Japanese }}</td>
+              <td class="p-2 border-b text-center">{{ word.JP.Romaji }}</td>
+              <td class="p-2 border-b text-center">{{ word.Unit }}</td>
+              <td class="p-2 border-b text-center">
+                <!-- ✅ Edit Button -->
+                <button
+                  @click="editWord(word)"
+                  class="text-sm bg-blue-400 hover:bg-blue-500 text-white px-3 py-1 rounded"
+                >
+                  ✏️ Edit
+                </button>
+                <!-- ❌ Delete Button -->
+                <button
+                  @click="deleteWord(word)"
+                  class="text-sm bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded ml-2"
+                >
+                  🗑️ Delete
+                </button>
+                <!-- ✅ Saved Status -->
+                <Transition name="fade-saved">
+                  <div v-if="isRecentlyUpdated(word)">
+                    <span
+                      class="text-green-600 text-sm font-medium inline-block mt-1 animate-pulse"
+                    >
+                      ✔️ Saved!
+                    </span>
+                  </div>
+                </Transition>
+              </td>
+            </tr>
+          </TransitionGroup>
+        </table>
+        <!-- Pagination Controls -->
+        <div class="mt-4 flex justify-between items-center text-gray-800 dark:text-white">
+          <button
+            @click="prevPage"
+            :disabled="currentPage === 1"
+            class="bg-gray-300 px-4 py-2 rounded dark:bg-gray-600 disabled:opacity-50"
+          >
+            ← Previous
+          </button>
+          <span>Page {{ currentPage }} of {{ totalPages }}</span>
+          <button
+            @click="nextPage"
+            :disabled="currentPage === totalPages"
+            class="bg-gray-300 px-4 py-2 rounded dark:bg-gray-600 disabled:opacity-50"
+          >
+            Next →
+          </button>
+        </div>
+        <!-- Edit Word Form -->
+        <Transition name="fade-slide" appear>
+          <div
+            v-if="wordBeingEdited"
+            ref="editSection"
+            class="mt-6 p-4 bg-white border rounded shadow transition dark:bg-gray-700 dark:border-gray-600"
+          >
+            <h3 class="text-lg font-semibold mb-2 dark:text-white">Editing Word</h3>
+            <div class="grid gap-4 grid-cols-1 md:grid-cols-2">
+              <div>
+                <label class="block text-sm font-medium dark:text-gray-300">English</label>
+                <input
+                  v-model="editForm.English"
+                  type="text"
+                  class="w-full border p-2 rounded dark:bg-gray-800 dark:text-white"
+                />
+                <p v-if="errors.English" class="text-sm text-red-600 mt-1">{{ errors.English }}</p>
+              </div>
+              <div>
+                <label class="block text-sm font-medium dark:text-gray-300">Unit</label>
+                <input
+                  v-model="editForm.Unit"
+                  type="text"
+                  class="w-full border p-2 rounded dark:bg-gray-800 dark:text-white"
+                />
+                <p v-if="errors.Unit" class="text-sm text-red-600 mt-1">{{ errors.Unit }}</p>
+              </div>
+              <div>
+                <label class="block text-sm font-medium dark:text-gray-300">Japanese</label>
+                <input
+                  v-model="editForm.JP.Japanese"
+                  type="text"
+                  class="w-full border p-2 rounded dark:bg-gray-800 dark:text-white"
+                />
+                <p v-if="errors.Japanese" class="text-sm text-red-600 mt-1">
+                  {{ errors.Japanese }}
+                </p>
+              </div>
+              <div>
+                <label class="block text-sm font-medium dark:text-gray-300">Romaji</label>
+                <input
+                  v-model="editForm.JP.Romaji"
+                  type="text"
+                  class="w-full border p-2 rounded dark:bg-gray-800 dark:text-white"
+                />
+                <p v-if="errors.Romaji" class="text-sm text-red-600 mt-1">{{ errors.Romaji }}</p>
+              </div>
+            </div>
+            <!-- Buttons -->
+            <div class="mt-4 flex gap-2">
               <button
-                @click="editWord(word)"
-                class="text-sm bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded"
+                @click="saveWord"
+                class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition"
               >
-                ✏️ Edit
+                💾 Save
               </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <!-- Pagination Controls -->
-      <div class="mt-4 flex justify-between items-center">
-        <button
-          @click="prevPage"
-          :disabled="currentPage === 1"
-          class="bg-gray-300 px-4 py-2 rounded disabled:opacity-50"
-        >
-          ← Previous
-        </button>
-        <span>Page {{ currentPage }} of {{ totalPages }}</span>
-        <button
-          @click="nextPage"
-          :disabled="currentPage === totalPages"
-          class="bg-gray-300 px-4 py-2 rounded disabled:opacity-50"
-        >
-          Next →
-        </button>
-      </div>
-
-      <!-- Edit Word Form -->
-      <div v-if="wordBeingEdited" ref="editSection" class="mt-6 p-4 bg-white border rounded shadow">
-        <h3 class="text-lg font-semibold mb-2">Editing Word</h3>
-
-        <div class="grid gap-4 grid-cols-1 md:grid-cols-2">
-          <div>
-            <label class="block text-sm font-medium">English</label>
-            <input v-model="editForm.English" type="text" class="w-full border p-2 rounded" />
+              <button
+                @click="cancelEdit"
+                class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500 transition"
+              >
+                ❌ Cancel
+              </button>
+            </div>
           </div>
-          <div>
-            <label class="block text-sm font-medium">Unit</label>
-            <input v-model="editForm.Unit" type="text" class="w-full border p-2 rounded" />
-          </div>
-          <div>
-            <label class="block text-sm font-medium">Japanese</label>
-            <input v-model="editForm.JP.Japanese" type="text" class="w-full border p-2 rounded" />
-          </div>
-          <div>
-            <label class="block text-sm font-medium">Romaji</label>
-            <input v-model="editForm.JP.Romaji" type="text" class="w-full border p-2 rounded" />
-          </div>
-        </div>
-
-        <div class="mt-4 flex gap-2">
-          <button
-            @click="saveWord"
-            class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-          >
-            💾 Save
-          </button>
-          <button
-            @click="cancelEdit"
-            class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500"
-          >
-            ❌ Cancel
-          </button>
-        </div>
+        </Transition>
       </div>
     </div>
-  </div>
+  </GlobalLayout>
 </template>
 
 <script setup>
 import { computed, ref, onMounted, nextTick } from 'vue'
-import { useToast } from 'vue-toastification'
 import { useStore } from 'vuex'
+import { useToast } from 'vue-toastification'
+import GlobalLayout from '@/layout/GlobalLayout.vue'
 
 const store = useStore()
 const toast = useToast()
+const isLoading = ref(false)
+const recentlyUpdated = ref(null)
 
 // Track selected unit from dropdown
 const selectedUnit = ref(null)
@@ -134,8 +192,13 @@ const availableUnits = computed(() => {
 
 // Update selected unit in store
 const setUnit = () => {
-  store.commit('words/setCurrentUnit', selectedUnit.value)
-  currentPage.value = 1 // Reset page to 1, reset pagination on unit change
+  isLoading.value = true
+  setTimeout(() => {
+    store.commit('words/setCurrentUnit', selectedUnit.value)
+    currentPage.value = 1 // Reset page to 1, reset pagination on unit change
+    toast.success(`✅ Unit changed to: ${selectedUnit.value}`)
+    isLoading.value = false
+  }, 300)
 }
 
 // Auto-select first unit on mount
@@ -155,6 +218,10 @@ const allWords = computed(() => {
   return store.getters['words/getWordsByUnit'](currentUnit.value)
 })
 
+const isRecentlyUpdated = (word) => {
+  return recentlyUpdated.value === `${word.English}-${word.Unit}`
+}
+
 // Pagination logic
 const currentPage = ref(1)
 const wordsPerPage = 10
@@ -166,11 +233,25 @@ const paginatedWords = computed(() => {
 })
 
 const nextPage = () => {
-  if (currentPage.value < totalPages.value) currentPage.value++
+  if (currentPage.value < totalPages.value) {
+    isLoading.value = true
+    setTimeout(() => {
+      currentPage.value++
+      toast.info(`📄 Page ${currentPage.value} loaded`)
+      isLoading.value = false
+    }, 300)
+  }
 }
 
 const prevPage = () => {
-  if (currentPage.value > 1) currentPage.value--
+  if (currentPage.value > 1) {
+    isLoading.value = true
+    setTimeout(() => {
+      currentPage.value--
+      toast.info(`📄 Page ${currentPage.value} loaded`)
+      isLoading.value = false
+    }, 300)
+  }
 }
 
 // Editing logic
@@ -186,6 +267,19 @@ const editForm = ref({
   },
 })
 
+const errors = ref({})
+
+const validateForm = () => {
+  errors.value = {}
+
+  if (!editForm.value.English.trim()) errors.value.English = 'English word is required'
+  if (!editForm.value.Unit.trim()) errors.value.Unit = 'Unit is required'
+  if (!editForm.value.JP.Japanese.trim()) errors.value.Japanese = 'Japanese word is required'
+  if (!editForm.value.JP.Romaji.trim()) errors.value.Romaji = 'Romaji is required'
+
+  return Object.keys(errors.value).length === 0
+}
+
 const editWord = (word) => {
   wordBeingEdited.value = word
 
@@ -200,17 +294,28 @@ const editWord = (word) => {
   }
   // Wait for DOM to update, then scroll
   nextTick(() => {
-    if (editSection.value) {
-      editSection.value?.scrollIntoView({ behavior: 'smooth' })
-    }
+    editSection.value?.scrollIntoView({ behavior: 'smooth' })
   })
 }
 
 const cancelEdit = () => {
   wordBeingEdited.value = null
+  editForm.value = {
+    English: '',
+    Unit: '',
+    JP: {
+      Japanese: '',
+      Romaji: '',
+    },
+  }
 }
 
 const saveWord = () => {
+  if (!validateForm()) {
+    toast.error('Please fix the validation errors before saving.')
+    return
+  }
+
   const updated = {
     originalEnglish: wordBeingEdited.value.English,
     originalUnit: wordBeingEdited.value.Unit,
@@ -218,8 +323,86 @@ const saveWord = () => {
   }
 
   store.commit('words/updateWord', updated)
-  wordBeingEdited.value = null
+
+  recentlyUpdated.value = `${editForm.value.English}-${editForm.value.Unit}`
+
+  setTimeout(() => {
+    recentlyUpdated.value = null
+  }, 3000)
 
   toast.success('Word updated successfully!')
+  wordBeingEdited.value = null
+  errors.value = {}
+}
+
+const deleteWord = (word) => {
+  const confirmDelete = confirm(`Are you sure you want to delete "${word.English}"?`)
+
+  if (confirmDelete) {
+    isLoading.value = true
+    setTimeout(() => {
+      store.commit('words/deleteWord', {
+        English: word.English,
+        Unit: word.Unit,
+      })
+      toast.success(`"${word.English}" was deleted successfully.`)
+      if (
+        wordBeingEdited.value &&
+        wordBeingEdited.value.English === word.English &&
+        wordBeingEdited.value.Unit === word.Unit
+      ) {
+        cancelEdit()
+      }
+      isLoading.value = false
+    }, 300)
+  }
 }
 </script>
+
+<style scoped lang="postcss">
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+.fade-slide-enter-from,
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateY(12px);
+}
+.fade-slide-enter-to,
+.fade-slide-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-table-enter-active,
+.fade-table-leave-active {
+  transition: all 0.35s ease;
+}
+.fade-table-enter-from,
+.fade-table-leave-to {
+  opacity: 0;
+  transform: translateY(8px);
+}
+.fade-table-enter-to,
+.fade-table-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-saved-enter-active,
+.fade-saved-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-saved-enter-from,
+.fade-saved-leave-to {
+  opacity: 0;
+}
+
+.fade-saved-enter-to,
+.fade-saved-leave-from {
+  opacity: 1;
+}
+</style>

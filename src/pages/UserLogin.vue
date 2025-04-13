@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900 transition-colors"
-  >
+  <div class="min-h-screen flex items-center justify-center dark:bg-gray-900 transition-colors">
     <form
       @submit.prevent="handleLogin"
       class="bg-white p-6 rounded shadow-md w-80 dark:bg-gray-800 dark:text-white"

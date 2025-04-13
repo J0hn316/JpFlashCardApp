@@ -1,22 +1,25 @@
 <template>
-  <div
-    class="p-4 max-w-4xl mx-auto bg-white dark:bg-gray-900 text-black dark:text-white min-h-screen"
-  >
-    <h1 class="text-2xl font-bold mb-4">Flashcard Quiz</h1>
-    <UnitSelector />
-    <div v-if="currentUnit">
-      <FlashcardList v-if="words.length" />
-      <p v-else>No words found for unit {{ currentUnit }}</p>
+  <GlobalLayout>
+    <div
+      class="p-4 max-w-4xl mx-auto bg-gray-300 dark:bg-gray-900 text-black dark:text-white min-h-screen"
+    >
+      <h1 class="text-2xl font-bold mb-4">Flashcard Quiz</h1>
+      <UnitSelector />
+      <div v-if="currentUnit">
+        <FlashcardList v-if="words.length" />
+        <p v-else>No words found for unit {{ currentUnit }}</p>
+      </div>
+      <div v-else>
+        <p class="mt-4 text-gray-600">Please select a unit to start the quiz.</p>
+      </div>
     </div>
-    <div v-else>
-      <p class="mt-4 text-gray-600">Please select a unit to start the quiz.</p>
-    </div>
-  </div>
+  </GlobalLayout>
 </template>
 
 <script setup>
 import { computed } from 'vue'
 import { useStore } from 'vuex'
+import GlobalLayout from '@/layout/GlobalLayout.vue'
 import FlashcardList from '@/components/FlashcardList.vue'
 import UnitSelector from '@/components/UnitSelector.vue'
 

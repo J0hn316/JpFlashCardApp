@@ -1,40 +1,37 @@
 <template>
-  <div class="min-h-screen flex items-center justify-center dark:bg-gray-900 transition-colors">
-    <div
-      class="bg-white dark:bg-gray-800 text-blue-500 dark:text-blue-300 p-6 rounded shadow-md w-96"
-    >
-      <h1 class="text-2xl mb-4">Dashboard Page</h1>
-      <p v-if="user">Welcome {{ user.name }}</p>
-      <p v-else class="text-red-600 dark:text-red-400">⚠️ No user logged in.</p>
-
-      <div class="mt-4">
-        <h2 class="font-semibold text-lg text-blue-600 dark:text-blue-400">🏆 High Scores</h2>
-        <ul v-if="Object.keys(highScores).length">
-          <li v-for="(userScores, unit) in highScores" :key="unit" class="mb-2">
-            <span class="font-bold">{{ unit }} Quiz</span>
-            <ul class="mt-2">
-              <li v-for="(score, username) in userScores" :key="username">
-                {{ username }} - {{ score }}%
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <p v-else class="text-gray-600 dark:text-gray-300">No high scores yet!</p>
-      </div>
-      <button
-        @click="goToQuiz"
-        class="mt-6 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+  <GlobalLayout>
+    <div class="min-h-screen flex items-center justify-center dark:bg-gray-900 transition-colors">
+      <div
+        class="bg-white dark:bg-gray-800 p-6 rounded shadow-md w-96 text-blue-600 dark:text-blue-300"
       >
-        Go to Quiz
-      </button>
+        <h1 class="text-2xl font-bold mb-4">Dashboard Page</h1>
+        <p v-if="user">👋 Welcome, {{ user.name }}</p>
+        <p v-else class="text-red-500">⚠️ No user logged in.</p>
+        <div class="mt-4">
+          <h2 class="font-semibold text-lg">🏆 High Scores</h2>
+          <ul v-if="Object.keys(highScores).length">
+            <li v-for="(score, unit) in highScores" :key="unit" class="ml-2 mt-1">
+              Quiz {{ unit }}: {{ score }}
+            </li>
+          </ul>
+          <p v-else class="text-sm text-gray-500 dark:text-gray-400">No high scores yet!</p>
+        </div>
+        <button
+          @click="goToQuiz"
+          class="mt-6 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition w-full"
+        >
+          Go to Quiz
+        </button>
+      </div>
     </div>
-  </div>
+  </GlobalLayout>
 </template>
 
 <script setup>
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
+import GlobalLayout from '@/layout/GlobalLayout.vue'
 
 const store = useStore()
 const router = useRouter()

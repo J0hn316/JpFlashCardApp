@@ -34,5 +34,11 @@ export default {
         }
       }
     },
+    deleteWord(state, payload) {
+      const { English, Unit } = payload
+      state.allWords = state.allWords.filter(
+        (word) => word.English !== English.trim() || word.Unit.trim() !== Unit.trim(),
+      )
+    },
   },
 }
