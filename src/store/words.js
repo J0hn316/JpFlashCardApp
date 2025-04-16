@@ -16,6 +16,16 @@ export default {
     setCurrentUnit(state, unit) {
       state.currentUnit = unit
     },
+    addWord(state, newWord) {
+      state.allWords.push({
+        English: newWord.English.trim(),
+        Unit: newWord.Unit.trim(),
+        JP: {
+          Japanese: newWord.JP.Japanese.trim(),
+          Romaji: newWord.JP.Romaji.trim(),
+        },
+      })
+    },
     updateWord(state, updatedWord) {
       const index = state.allWords.findIndex(
         (word) =>

@@ -41,6 +41,7 @@ export default {
       const unit = rootState.words.currentUnit
       const user = rootState.auth.user?.name || 'Unknown'
 
+      // TODO change code below from this Quiz Gender: { "John": 100 } to Quiz Gender: John - 100%
       if (user && unit && state.totalQuestions > 0) {
         const percentage = Math.round((state.score / state.totalQuestions) * 100)
         commit('SAVE_HIGH_SCORE', { unit, username: user, percentage })

@@ -6,179 +6,78 @@
       >
         <h1 class="text-2xl font-bold mb-4 text-blue-600 dark:text-blue-300">Manage Words</h1>
         <!-- Unit Selector -->
-        <div class="mb-4">
-          <label for="unitSelect" class="block text-sm font-semibold mb-1 dark:text-white">
-            Select a unit:
-          </label>
-          <select
-            id="unitSelect"
-            v-model="selectedUnit"
-            @change="setUnit"
-            class="w-full border px-3 py-2 rounded shadow-sm dark:bg-gray-700 dark:text-white"
-          >
-            <option disabled value="">-- Select a unit --</option>
-            <option v-for="unit in availableUnits" :key="unit" :value="unit">
-              {{ unit }}
-            </option>
-          </select>
-        </div>
+        <UnitSelectorForManage
+          :selectedUnit="selectedUnit"
+          :availableUnits="availableUnits"
+          @update:selectedUnit="handleUnitChange"
+        />
         <!-- Loading Spinner -->
         <div v-if="isLoading" class="flex justify-center items-center p-4">
           <div
             class="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"
           ></div>
         </div>
+        <!-- Toggle Add Form Button -->
+        <button
+          @click="showAddForm = !showAddForm"
+          class="mb-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+        >
+          {{ showAddForm ? '➖ Cancel Add' : '➕ Add New Word' }}
+        </button>
+        <!-- Add Word Form -->
+        <AddWordForm
+          :visible="showAddForm"
+          :selectedUnit="selectedUnit"
+          :availableUnits="availableUnits"
+          @submit="handleAddWord"
+          @cancel="cancelNewWord"
+        />
+
         <!-- Words Table -->
-        <table class="w-full text-left border-collapse table-auto transition-colors">
-          <thead>
-            <tr class="bg-blue-100 text-blue-800 dark:bg-gray-700 dark:text-blue-200">
-              <th class="p-2 border-b font-bold text-center">English</th>
-              <th class="p-2 border-b font-bold text-center">Japanese</th>
-              <th class="p-2 border-b font-bold text-center">Romaji</th>
-              <th class="p-2 border-b font-bold text-center">Unit</th>
-              <th class="p-2 border-b font-bold text-center">Actions</th>
-            </tr>
-          </thead>
-          <TransitionGroup name="fade-table" tag="tbody">
-            <tr
-              v-for="(word, index) in paginatedWords"
-              :key="index"
-              :class="[
-                'hover:bg-blue-50 dark:hover:bg-gray-600',
-                'transition',
-                isRecentlyUpdated(word) ? 'bg-green-100 dark:bg-green-800/60' : '',
-              ]"
-            >
-              <td class="p-2 border-b text-center">{{ word.English }}</td>
-              <td class="p-2 border-b text-center">{{ word.JP.Japanese }}</td>
-              <td class="p-2 border-b text-center">{{ word.JP.Romaji }}</td>
-              <td class="p-2 border-b text-center">{{ word.Unit }}</td>
-              <td class="p-2 border-b text-center">
-                <!-- ✅ Edit Button -->
-                <button
-                  @click="editWord(word)"
-                  class="text-sm bg-blue-400 hover:bg-blue-500 text-white px-3 py-1 rounded"
-                >
-                  ✏️ Edit
-                </button>
-                <!-- ❌ Delete Button -->
-                <button
-                  @click="deleteWord(word)"
-                  class="text-sm bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded ml-2"
-                >
-                  🗑️ Delete
-                </button>
-                <!-- ✅ Saved Status -->
-                <Transition name="fade-saved">
-                  <div v-if="isRecentlyUpdated(word)">
-                    <span
-                      class="text-green-600 text-sm font-medium inline-block mt-1 animate-pulse"
-                    >
-                      ✔️ Saved!
-                    </span>
-                  </div>
-                </Transition>
-              </td>
-            </tr>
-          </TransitionGroup>
-        </table>
-        <!-- Pagination Controls -->
-        <div class="mt-4 flex justify-between items-center text-gray-800 dark:text-white">
-          <button
-            @click="prevPage"
-            :disabled="currentPage === 1"
-            class="bg-gray-300 px-4 py-2 rounded dark:bg-gray-600 disabled:opacity-50"
-          >
-            ← Previous
-          </button>
-          <span>Page {{ currentPage }} of {{ totalPages }}</span>
-          <button
-            @click="nextPage"
-            :disabled="currentPage === totalPages"
-            class="bg-gray-300 px-4 py-2 rounded dark:bg-gray-600 disabled:opacity-50"
-          >
-            Next →
-          </button>
-        </div>
+        <WordsTable
+          :words="paginatedWords"
+          :recentlyAddedKey="recentlyAdded"
+          :recentlyUpdatedKey="recentlyUpdated"
+          @edit="editWord"
+          @delete="deleteWord"
+        />
+        <PaginationControls
+          :currentPage="currentPage"
+          :totalPages="totalPages"
+          @prev="prevPage"
+          @next="nextPage"
+        />
         <!-- Edit Word Form -->
-        <Transition name="fade-slide" appear>
-          <div
-            v-if="wordBeingEdited"
-            ref="editSection"
-            class="mt-6 p-4 bg-white border rounded shadow transition dark:bg-gray-700 dark:border-gray-600"
-          >
-            <h3 class="text-lg font-semibold mb-2 dark:text-white">Editing Word</h3>
-            <div class="grid gap-4 grid-cols-1 md:grid-cols-2">
-              <div>
-                <label class="block text-sm font-medium dark:text-gray-300">English</label>
-                <input
-                  v-model="editForm.English"
-                  type="text"
-                  class="w-full border p-2 rounded dark:bg-gray-800 dark:text-white"
-                />
-                <p v-if="errors.English" class="text-sm text-red-600 mt-1">{{ errors.English }}</p>
-              </div>
-              <div>
-                <label class="block text-sm font-medium dark:text-gray-300">Unit</label>
-                <input
-                  v-model="editForm.Unit"
-                  type="text"
-                  class="w-full border p-2 rounded dark:bg-gray-800 dark:text-white"
-                />
-                <p v-if="errors.Unit" class="text-sm text-red-600 mt-1">{{ errors.Unit }}</p>
-              </div>
-              <div>
-                <label class="block text-sm font-medium dark:text-gray-300">Japanese</label>
-                <input
-                  v-model="editForm.JP.Japanese"
-                  type="text"
-                  class="w-full border p-2 rounded dark:bg-gray-800 dark:text-white"
-                />
-                <p v-if="errors.Japanese" class="text-sm text-red-600 mt-1">
-                  {{ errors.Japanese }}
-                </p>
-              </div>
-              <div>
-                <label class="block text-sm font-medium dark:text-gray-300">Romaji</label>
-                <input
-                  v-model="editForm.JP.Romaji"
-                  type="text"
-                  class="w-full border p-2 rounded dark:bg-gray-800 dark:text-white"
-                />
-                <p v-if="errors.Romaji" class="text-sm text-red-600 mt-1">{{ errors.Romaji }}</p>
-              </div>
-            </div>
-            <!-- Buttons -->
-            <div class="mt-4 flex gap-2">
-              <button
-                @click="saveWord"
-                class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition"
-              >
-                💾 Save
-              </button>
-              <button
-                @click="cancelEdit"
-                class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500 transition"
-              >
-                ❌ Cancel
-              </button>
-            </div>
-          </div>
-        </Transition>
+        <EditWordForm
+          v-if="wordBeingEdited"
+          :word="wordBeingEdited"
+          @submit="handleEditSave"
+          @cancel="cancelEdit"
+        />
       </div>
     </div>
   </GlobalLayout>
 </template>
 
 <script setup>
-import { computed, ref, onMounted, nextTick } from 'vue'
+import { computed, ref, onMounted } from 'vue'
 import { useStore } from 'vuex'
 import { useToast } from 'vue-toastification'
+
+// Global Layout
 import GlobalLayout from '@/layout/GlobalLayout.vue'
+
+// Components
+import WordsTable from '@/components/WordsTable.vue'
+import AddWordForm from '@/components/AddWordForm.vue'
+import EditWordForm from '@/components/EditWordForm.vue'
+import PaginationControls from '@/components/PaginationControls.vue'
+import UnitSelectorForManage from '@/components/UnitSelectorForManage.vue'
 
 const store = useStore()
 const toast = useToast()
 const isLoading = ref(false)
+const recentlyAdded = ref(null)
 const recentlyUpdated = ref(null)
 
 // Track selected unit from dropdown
@@ -201,6 +100,11 @@ const setUnit = () => {
   }, 300)
 }
 
+const handleUnitChange = (unit) => {
+  selectedUnit.value = unit
+  setUnit()
+}
+
 // Auto-select first unit on mount
 onMounted(() => {
   if (availableUnits.value.length > 0) {
@@ -217,10 +121,6 @@ const allWords = computed(() => {
   if (!currentUnit.value) return []
   return store.getters['words/getWordsByUnit'](currentUnit.value)
 })
-
-const isRecentlyUpdated = (word) => {
-  return recentlyUpdated.value === `${word.English}-${word.Unit}`
-}
 
 // Pagination logic
 const currentPage = ref(1)
@@ -256,75 +156,52 @@ const prevPage = () => {
 
 // Editing logic
 const wordBeingEdited = ref(null)
-const editSection = ref(null)
+const showAddForm = ref(false)
 
-const editForm = ref({
-  English: '',
-  Unit: '',
-  JP: {
-    Japanese: '',
-    Romaji: '',
-  },
-})
-
-const errors = ref({})
-
-const validateForm = () => {
-  errors.value = {}
-
-  if (!editForm.value.English.trim()) errors.value.English = 'English word is required'
-  if (!editForm.value.Unit.trim()) errors.value.Unit = 'Unit is required'
-  if (!editForm.value.JP.Japanese.trim()) errors.value.Japanese = 'Japanese word is required'
-  if (!editForm.value.JP.Romaji.trim()) errors.value.Romaji = 'Romaji is required'
-
-  return Object.keys(errors.value).length === 0
-}
-
-const editWord = (word) => {
-  wordBeingEdited.value = word
-
-  // Pre-fill form
-  editForm.value = {
-    English: word.English,
-    Unit: word.Unit,
+const handleAddWord = (newWord) => {
+  const cleanedWord = {
+    English: newWord.English.trim(),
+    Unit: newWord.Unit.trim(),
     JP: {
-      Japanese: word.JP.Japanese,
-      Romaji: word.JP.Romaji,
+      Japanese: newWord.JP.Japanese.trim(),
+      Romaji: newWord.JP.Romaji.trim(),
     },
   }
-  // Wait for DOM to update, then scroll
-  nextTick(() => {
-    editSection.value?.scrollIntoView({ behavior: 'smooth' })
-  })
+
+  store.commit('words/addWord', cleanedWord)
+
+  recentlyAdded.value = `${cleanedWord.English}-${cleanedWord.Unit}`
+  toast.success(`✅ "${cleanedWord.English}" added successfully!`)
+  showAddForm.value = false
+  currentPage.value = totalPages.value
+
+  setTimeout(() => {
+    recentlyAdded.value = null
+  }, 3000)
+}
+
+const cancelNewWord = () => {
+  showAddForm.value = false
+}
+
+const editWord = async (word) => {
+  wordBeingEdited.value = word
 }
 
 const cancelEdit = () => {
   wordBeingEdited.value = null
-  editForm.value = {
-    English: '',
-    Unit: '',
-    JP: {
-      Japanese: '',
-      Romaji: '',
-    },
-  }
 }
 
-const saveWord = () => {
-  if (!validateForm()) {
-    toast.error('Please fix the validation errors before saving.')
-    return
-  }
-
+const handleEditSave = (updatedFields) => {
   const updated = {
     originalEnglish: wordBeingEdited.value.English,
     originalUnit: wordBeingEdited.value.Unit,
-    ...editForm.value,
+    ...updatedFields,
   }
 
   store.commit('words/updateWord', updated)
 
-  recentlyUpdated.value = `${editForm.value.English}-${editForm.value.Unit}`
+  recentlyUpdated.value = `${updatedFields.English}-${updatedFields.Unit}`
 
   setTimeout(() => {
     recentlyUpdated.value = null
@@ -332,7 +209,6 @@ const saveWord = () => {
 
   toast.success('Word updated successfully!')
   wordBeingEdited.value = null
-  errors.value = {}
 }
 
 const deleteWord = (word) => {
@@ -360,6 +236,21 @@ const deleteWord = (word) => {
 </script>
 
 <style scoped lang="postcss">
+.animate-pulse {
+  animation: pulseFade 0.8s ease-in-out 2;
+}
+
+@keyframes pulseFade {
+  0% {
+    background-color: rgba(34, 197, 94, 0.3);
+  }
+  50% {
+    background-color: rgba(34, 197, 94, 0.6);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
 .fade-slide-enter-active,
 .fade-slide-leave-active {
   transition:
