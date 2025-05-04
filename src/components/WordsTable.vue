@@ -11,8 +11,8 @@
     </thead>
     <TransitionGroup name="fade-table" tag="tbody">
       <tr
-        v-for="(word, index) in words"
-        :key="index"
+        v-for="word in words"
+        :key="word.id"
         :class="[
           'hover:bg-blue-50 dark:hover:bg-gray-600 transition',
           isRecentlyUpdated(word) ? 'bg-green-100 dark:bg-green-800/60' : '',
@@ -20,10 +20,10 @@
           ,
         ]"
       >
-        <td class="p-2 border-b text-center">{{ word.English }}</td>
-        <td class="p-2 border-b text-center">{{ word.JP.Japanese }}</td>
-        <td class="p-2 border-b text-center">{{ word.JP.Romaji }}</td>
-        <td class="p-2 border-b text-center">{{ word.Unit }}</td>
+        <td class="p-2 border-b text-center">{{ word.english }}</td>
+        <td class="p-2 border-b text-center">{{ word.japanese }}</td>
+        <td class="p-2 border-b text-center">{{ word.romaji }}</td>
+        <td class="p-2 border-b text-center">{{ word.unit }}</td>
         <td class="p-2 border-b text-center">
           <!-- ✅ Edit Button -->
           <button
@@ -55,18 +55,23 @@
 
 <script setup>
 const props = defineProps({
-  words: Array,
-  isRecentlyUpdated: String,
-  isRecentlyAdded: String,
+  words: {
+    type: Array,
+    required: true,
+  },
+  recentlyAddedKey: {
+    type: String,
+    default: null,
+  },
+  recentlyUpdatedKey: {
+    type: String,
+    default: null,
+  },
 })
 
 defineEmits(['edit', 'delete'])
 
-const isRecentlyUpdated = (word) => {
-  return props.recentlyUpdatedKey === `${word.English}-${word.Unit}`
-}
+const isRecentlyUpdated = (word) => props.recentlyUpdatedKey === `${word.english}-${word.unit}`
 
-const isRecentlyAdded = (word) => {
-  return props.recentlyAddedKey === `${word.English}-${word.Unit}`
-}
+const isRecentlyAdded = (word) => props.recentlyAddedKey === `${word.english}-${word.unit}`
 </script>

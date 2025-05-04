@@ -30,5 +30,5 @@ Notes.js
 *.njsproj
 *.sln
 *.sw?
-
+.env
 *.tsbuildinfo

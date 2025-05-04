@@ -48,14 +48,35 @@ const router = createRouter({
   ],
 })
 
-router.beforeEach((to, from, next) => {
-  const isLoggedIn = !!store.state.auth.user
+// Global guard
+router.beforeEach(async (to, from, next) => {
+  // check for token in local storage
+  const token = localStorage.getItem('apiToken')
 
-  if (to.meta.requiresAuth && !isLoggedIn) {
-    // Not logged in but trying to access a protected page
-    return next('/')
+  if (to.meta.requiresAuth) {
+    if (!token) {
+      // Not logged in, redirect to login
+      return next({ name: 'Login' })
+    }
+
+    if (!store.state.auth.user) {
+      try {
+        const res = await fetch('http://127.0.0.1:8000/api/user', {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+
+        if (!res.ok) throw new Error()
+
+        const user = await res.json()
+        store.commit('auth/SET_USER', user)
+      } catch {
+        // Invalid token: clear it and redirect
+        localStorage.removeItem('apiToken')
+        return next({ name: 'Login' })
+      }
+    }
   }
-  // Otherwise allow navigation
+  // No auth required, or token/user is valid
   next()
 })
 

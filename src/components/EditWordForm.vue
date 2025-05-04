@@ -9,40 +9,40 @@
         <div>
           <label class="block text-sm font-medium dark:text-gray-300">English</label>
           <input
-            v-model="form.English"
+            v-model="form.english"
             type="text"
             class="w-full border p-2 rounded dark:bg-gray-800 dark:text-white"
           />
-          <p v-if="errors.English" class="text-sm text-red-600 mt-1">{{ errors.English }}</p>
+          <p v-if="errors.english" class="text-sm text-red-600 mt-1">{{ errors.english }}</p>
         </div>
         <div>
           <label class="block text-sm font-medium dark:text-gray-300">Unit</label>
           <input
-            v-model="form.Unit"
+            v-model="form.unit"
             type="text"
             class="w-full border p-2 rounded dark:bg-gray-800 dark:text-white"
           />
-          <p v-if="errors.Unit" class="text-sm text-red-600 mt-1">{{ errors.Unit }}</p>
+          <p v-if="errors.unit" class="text-sm text-red-600 mt-1">{{ errors.unit }}</p>
         </div>
         <div>
           <label class="block text-sm font-medium dark:text-gray-300">Japanese</label>
           <input
-            v-model="form.JP.Japanese"
+            v-model="form.japanese"
             type="text"
             class="w-full border p-2 rounded dark:bg-gray-800 dark:text-white"
           />
-          <p v-if="errors.Japanese" class="text-sm text-red-600 mt-1">
-            {{ errors.Japanese }}
+          <p v-if="errors.japanese" class="text-sm text-red-600 mt-1">
+            {{ errors.japanese }}
           </p>
         </div>
         <div>
           <label class="block text-sm font-medium dark:text-gray-300">Romaji</label>
           <input
-            v-model="form.JP.Romaji"
+            v-model="form.romaji"
             type="text"
             class="w-full border p-2 rounded dark:bg-gray-800 dark:text-white"
           />
-          <p v-if="errors.Romaji" class="text-sm text-red-600 mt-1">{{ errors.Romaji }}</p>
+          <p v-if="errors.romaji" class="text-sm text-red-600 mt-1">{{ errors.romaji }}</p>
         </div>
       </div>
       <!-- Buttons -->
@@ -85,10 +85,10 @@ const form = ref({
 
 const validate = () => {
   errors.value = {}
-  if (!form.value.English.trim()) errors.value.English = 'Required'
-  if (!form.value.Unit.trim()) errors.value.Unit = 'Required'
-  if (!form.value.JP.Japanese.trim()) errors.value.Japanese = 'Required'
-  if (!form.value.JP.Romaji.trim()) errors.value.Romaji = 'Required'
+  if (!form.value.english.trim()) errors.value.english = 'Required'
+  if (!form.value.unit.trim()) errors.value.unit = 'Required'
+  if (!form.value.japanese.trim()) errors.value.japanese = 'Required'
+  if (!form.value.romaji.trim()) errors.value.romaji = 'Required'
   return Object.keys(errors.value).length === 0
 }
 
@@ -103,11 +103,11 @@ watch(
   (newWord) => {
     if (newWord) {
       form.value = {
-        English: newWord.English,
-        Unit: newWord.Unit,
+        English: newWord.english,
+        Unit: newWord.unit,
         JP: {
-          Japanese: newWord.JP.Japanese,
-          Romaji: newWord.JP.Romaji,
+          Japanese: newWord.japanese,
+          Romaji: newWord.romaji,
         },
       }
       errors.value = {}
@@ -121,11 +121,11 @@ watch(
   async (newWord) => {
     if (newWord) {
       form.value = {
-        English: newWord.English,
-        Unit: newWord.Unit,
+        English: newWord.english,
+        Unit: newWord.unit,
         JP: {
-          Japanese: newWord.JP.Japanese,
-          Romaji: newWord.JP.Romaji,
+          Japanese: newWord.japanese,
+          Romaji: newWord.romaji,
         },
       }
       errors.value = {}

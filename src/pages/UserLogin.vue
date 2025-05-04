@@ -6,36 +6,54 @@
     >
       <h2 class="text-xl mb-4">Login</h2>
       <input
-        v-model="username"
-        type="text"
-        placeholder="Username"
+        v-model="email"
+        type="email"
+        placeholder="Email"
         class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600"
       />
-      <button class="mt-4 bg-blue-600 text-white p-2 w-full">Login</button>
+      <input
+        v-model="password"
+        type="password"
+        placeholder="Password"
+        class="w-full p-2 mt-2 border rounded dark:bg-gray-700 dark:border-gray-600"
+      />
+
+      <button
+        type="submit"
+        class="mt-4 bg-blue-600 text-white p-2 w-full rounded hover:bg-blue-700 transition"
+      >
+        Login
+      </button>
     </form>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-import { useStore } from 'vuex'
+import axios from 'axios'
 import { useRouter } from 'vue-router'
 import { useToast } from 'vue-toastification'
 
-const username = ref('')
-const store = useStore()
+const email = ref('')
+const password = ref('')
 const router = useRouter()
 const toast = useToast()
 
+const API_BASE = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'
+
 const handleLogin = async () => {
   try {
-    const res = await store.dispatch('auth/login', { username: username.value })
-    if (res) {
-      router.push('/dashboard')
-    }
-  } catch (error) {
-    toast.error('User name required')
-    console.error(error)
+    const res = await axios.post(
+      `${API_BASE}/api/login`,
+      { email: email.value, password: password.value },
+      { headers: { Accept: 'application/json', 'Content-Type': 'application/json' } },
+    )
+
+    localStorage.setItem('apiToken', res.data.token)
+    router.push('/dashboard')
+  } catch (err) {
+    toast.error('Login failed: ' + (err.response?.data?.message || err.message))
+    console.error(err)
   }
 }
 </script>
