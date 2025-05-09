@@ -18,5 +18,7 @@ import GlobalLayout from '@/layout/GlobalLayout.vue'
 
 const route = useRoute()
 
-const showNavbar = computed(() => route.path !== '/')
+const showNavbar = computed(
+  () => route.path !== '/' && route.path !== '/login' && route.path !== '/register',
+)
 </script>

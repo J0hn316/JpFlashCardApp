@@ -42,7 +42,14 @@
         </button>
 
         <!-- Add Word Form -->
-        <AddWordForm v-if="showAddForm" @submit="createWord" @cancel="showAddForm = false" />
+        <AddWordForm
+          v-if="showAddForm"
+          :visible="showAddForm"
+          :selected-unit="unit"
+          :available-units="availableUnits"
+          @submit="createWord"
+          @cancel="() => (showAddForm = false)"
+        />
 
         <!-- Words Table -->
         <WordsTable
@@ -53,14 +60,19 @@
           @delete="deleteWord"
         />
         <PaginationControls
-          :currentPage="pagination.current_page"
-          :lastPage="pagination.last_page"
-          @pageChange="onPageChange"
+          :current-page="pagination.current_page"
+          :last-page="pagination.last_page"
+          @page-changed="onPageChange"
           class="mt-4"
         />
         <!-- Edit Word Form -->
         <div v-if="editingWord" class="mt-6">
-          <EditWordForm :word="editingWord" @submit="updateWord" @cancel="editingWord = null" />
+          <EditWordForm
+            :word="editingWord"
+            :available-units="availableUnits"
+            @submit="updateWord"
+            @cancel="editingWord = null"
+          />
         </div>
       </div>
     </div>
@@ -109,19 +121,16 @@ const pagination = reactive({
 const words = ref([])
 const availableUnits = ref([])
 
-// Fetch units by loading page 1 (we only need unique unit list)
 const fetchUnits = async () => {
   try {
-    const { data } = await axios.get(`/words/${unit.value}`, {
-      params: { per_page: pagination.per_page },
-    })
-    const units = data.data.map((word) => word.unit)
+    const { data } = await axios.get('/units')
+    const filtered = data.filter((unit) => unit && unit.trim() !== '')
 
-    availableUnits.value = Array.from(new Set(units))
-    unit.value = availableUnits.value[0] || '1'
+    availableUnits.value = filtered
+    unit.value = filtered[0] || ''
   } catch (err) {
     toast.error('Failed to load units.')
-    console.error(err)
+    console.error('❌ fetchUnits error:', err.response || err)
   }
 }
 
@@ -204,6 +213,7 @@ const updateWord = async (updated) => {
   }
 }
 
+// Delete
 const deleteWord = async (word) => {
   if (!confirm(`Delete "${word.english}"?`)) return
   try {

@@ -24,6 +24,12 @@
       >
         Login
       </button>
+      <p class="mt-4 text-sm">
+        Don't have an account ?
+        <router-link to="/register" class="text-blue-600 hover:underline ml-1">
+          Sign up
+        </router-link>
+      </p>
     </form>
   </div>
 </template>
@@ -39,12 +45,12 @@ const password = ref('')
 const router = useRouter()
 const toast = useToast()
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'
+axios.defaults.baseURL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api'
 
 const handleLogin = async () => {
   try {
     const res = await axios.post(
-      `${API_BASE}/api/login`,
+      '/login',
       { email: email.value, password: password.value },
       { headers: { Accept: 'application/json', 'Content-Type': 'application/json' } },
     )

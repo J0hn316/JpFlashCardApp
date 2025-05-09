@@ -1,10 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import UserLogin from '@/pages/UserLogin.vue'
-import UserDashboard from '@/pages/UserDashboard.vue'
-import FlashcardQuiz from '@/pages/FlashcardQuiz.vue'
-import ManageWords from '@/pages/ManageWords.vue'
-import NotFound from '@/pages/NotFound.vue'
+import Login from '@/pages/LoginPage.vue'
+import Register from '@/pages/RegisterPage.vue'
+import NotFound from '@/pages/NotFoundPage.vue'
+import Dashboard from '@/pages/DashboardPage.vue'
+import ManageWords from '@/pages/ManageWordsPage.vue'
+import FlashcardQuiz from '@/pages/FlashcardQuizPage.vue'
 
 import store from '@/store'
 
@@ -13,20 +14,30 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'login',
-      component: UserLogin,
+      name: 'Register',
+      component: Register,
+    },
+    {
+      path: '/register',
+      name: 'RegisterPage',
+      component: Register,
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login,
     },
     {
       path: '/dashboard',
-      name: 'dashboard',
-      component: UserDashboard,
+      name: 'Dashboard',
+      component: Dashboard,
       meta: {
         requiresAuth: true,
       },
     },
     {
       path: '/quiz',
-      name: 'quiz',
+      name: 'Quiz',
       component: FlashcardQuiz,
       meta: {
         requiresAuth: true,
@@ -34,7 +45,7 @@ const router = createRouter({
     },
     {
       path: '/manage-words',
-      name: 'manage-words',
+      name: 'Manage-words',
       component: ManageWords,
       meta: {
         requiresAuth: true,
@@ -42,7 +53,7 @@ const router = createRouter({
     },
     {
       path: '/:notfound(.*)',
-      name: 'notfound',
+      name: 'Notfound',
       component: NotFound,
     },
   ],

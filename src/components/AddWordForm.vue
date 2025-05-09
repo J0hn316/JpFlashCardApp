@@ -5,22 +5,23 @@
       class="mb-6 p-4 bg-white border rounded shadow dark:bg-gray-700 dark:border-gray-600 transition"
     >
       <h3 class="text-lg font-semibold mb-2 dark:text-white">Add New Word</h3>
-
+      <!-- English -->
       <div class="grid gap-4 grid-cols-1 md:grid-cols-2">
         <div>
           <label class="block text-sm font-medium dark:text-gray-300">English</label>
           <input
-            v-model="form.English"
+            v-model="form.english"
             type="text"
             class="w-full border p-2 rounded dark:bg-gray-800 dark:text-white"
           />
-          <p v-if="errors.English" class="text-sm text-red-600 mt-1">{{ errors.English }}</p>
+          <p v-if="errors.english" class="text-sm text-red-600 mt-1">{{ errors.english }}</p>
         </div>
 
+        <!-- Unit -->
         <div>
           <label class="block text-sm font-medium dark:text-gray-300">Unit</label>
           <select
-            v-model="form.Unit"
+            v-model="form.unit"
             class="w-full border p-2 rounded dark:bg-gray-800 dark:text-white"
           >
             <option disabled value="">-- Select a unit --</option>
@@ -28,30 +29,31 @@
               {{ unit }}
             </option>
           </select>
-          <p v-if="errors.Unit" class="text-sm text-red-600 mt-1">{{ errors.Unit }}</p>
+          <p v-if="errors.unit" class="text-sm text-red-600 mt-1">{{ errors.unit }}</p>
         </div>
 
+        <!-- Japanese -->
         <div>
           <label class="block text-sm font-medium dark:text-gray-300">Japanese</label>
           <input
-            v-model="form.JP.Japanese"
+            v-model="form.japanese"
             type="text"
             class="w-full border p-2 rounded dark:bg-gray-800 dark:text-white"
           />
-          <p v-if="errors.Japanese" class="text-sm text-red-600 mt-1">{{ errors.Japanese }}</p>
+          <p v-if="errors.japanese" class="text-sm text-red-600 mt-1">{{ errors.japanese }}</p>
         </div>
 
+        <!-- Romaji -->
         <div>
           <label class="block text-sm font-medium dark:text-gray-300">Romaji</label>
           <input
-            v-model="form.JP.Romaji"
+            v-model="form.romaji"
             type="text"
             class="w-full border p-2 rounded dark:bg-gray-800 dark:text-white"
           />
-          <p v-if="errors.Romaji" class="text-sm text-red-600 mt-1">{{ errors.Romaji }}</p>
+          <p v-if="errors.romaji" class="text-sm text-red-600 mt-1">{{ errors.romaji }}</p>
         </div>
       </div>
-
       <div class="mt-4 flex gap-2">
         <button
           @click="submit"
@@ -76,25 +78,26 @@ import { ref, watch, defineProps, defineEmits } from 'vue'
 const props = defineProps({
   visible: Boolean,
   selectedUnit: String,
-  availableUnits: Array,
+  availableUnits: {
+    type: Array,
+    default: () => [],
+  },
 })
 const emit = defineEmits(['submit', 'cancel'])
 const errors = ref({})
 
 const form = ref({
-  English: '',
-  Unit: '',
-  JP: {
-    Japanese: '',
-    Romaji: '',
-  },
+  english: '',
+  unit: '',
+  japanese: '',
+  romaji: '',
 })
 
 watch(
   () => props.visible,
   (isVisible) => {
     if (isVisible) {
-      form.value.Unit = props.selectedUnit || ''
+      form.value.unit = props.selectedUnit || ''
       errors.value = {}
     } else {
       reset()
@@ -104,10 +107,10 @@ watch(
 
 const validate = () => {
   errors.value = {}
-  if (!form.value.English.trim()) errors.value.English = 'Required'
-  if (!form.value.Unit.trim()) errors.value.Unit = 'Required'
-  if (!form.value.JP.Japanese.trim()) errors.value.Japanese = 'Required'
-  if (!form.value.JP.Romaji.trim()) errors.value.Romaji = 'Required'
+  if (!form.value.english.trim()) errors.value.english = 'Required'
+  if (!form.value.unit.trim()) errors.value.unit = 'Required'
+  if (!form.value.japanese.trim()) errors.value.japanese = 'Required'
+  if (!form.value.romaji.trim()) errors.value.romaji = 'Required'
   return Object.keys(errors.value).length === 0
 }
 
@@ -117,15 +120,8 @@ const submit = () => {
   reset()
 }
 
-const reset = () => {
-  form.value = {
-    English: '',
-    Unit: '',
-    JP: {
-      Japanese: '',
-      Romaji: '',
-    },
-  }
+function reset() {
+  form.value = { english: '', unit: '', japanese: '', romaji: '' }
   errors.value = {}
 }
 </script>
