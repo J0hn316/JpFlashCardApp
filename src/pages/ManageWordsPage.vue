@@ -6,15 +6,14 @@
       >
         <h1 class="text-2xl font-bold mb-4 text-blue-600 dark:text-blue-300">Manage Words</h1>
 
-        <!-- Unit Selector & Search Controls -->
+        <!-- Search & Add Word Controls -->
         <div class="flex space-x-4 mb-4">
-          <UnitSelectorForManage v-model="unit" :availableUnits="availableUnits" />
           <div class="flex-1 flex">
             <input
               v-model="search"
               @keyup.enter="fetchWords"
               type="text"
-              placeholder="Search words..."
+              placeholder="Enter english words here..."
               class="border rounded p-2 flex-1 dark:bg-gray-700 dark:border-gray-600"
             />
             <button
@@ -24,7 +23,23 @@
               Search
             </button>
           </div>
+          <button
+            @click="showAddForm = !showAddForm"
+            class="ml-1 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+          >
+            {{ showAddForm ? '➖ Cancel' : '➕ Add New Word' }}
+          </button>
         </div>
+
+        <!-- Add Word Form -->
+        <AddWordForm
+          v-if="showAddForm"
+          :visible="showAddForm"
+          :available-units="availableUnits"
+          :initial-english="search"
+          @submit="createWord"
+          @cancel="() => (showAddForm = false)"
+        />
 
         <!-- Loading Spinner -->
         <div v-if="isLoading" class="flex justify-center items-center p-4">
@@ -33,38 +48,38 @@
           ></div>
         </div>
 
-        <!-- Toggle Add Form Button -->
-        <button
-          @click="showAddForm = !showAddForm"
-          class="mb-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
-        >
-          {{ showAddForm ? '➖ Cancel Add' : '➕ Add New Word' }}
-        </button>
+        <div v-else-if="words.length > 0">
+          <!-- Words Table -->
+          <WordsTable
+            :words="words"
+            :recentlyAddedKey="recentlyAdded"
+            :recentlyUpdatedKey="recentlyUpdated"
+            @edit="onEdit"
+            @delete="deleteWord"
+          />
+          <!-- Pagination -->
+          <PaginationControls
+            :current-page="pagination.current_page"
+            :last-page="pagination.last_page"
+            @page-changed="onPageChange"
+            class="mt-4"
+          />
+        </div>
 
-        <!-- Add Word Form -->
-        <AddWordForm
-          v-if="showAddForm"
-          :visible="showAddForm"
-          :selected-unit="unit"
-          :available-units="availableUnits"
-          @submit="createWord"
-          @cancel="() => (showAddForm = false)"
-        />
+        <!-- If no results & non-empty search -->
+        <div v-else-if="search.trim().length > 0 && !showAddForm" class="text-center p-6">
+          <p class="mb-4 text-lg dark:text-white">
+            No words found for “<strong>{{ search }}</strong
+            >”.
+          </p>
+          <button
+            @click="showAddForm = true"
+            class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+          >
+            ➕ Click here to add word.
+          </button>
+        </div>
 
-        <!-- Words Table -->
-        <WordsTable
-          :words="words"
-          :recentlyAddedKey="recentlyAdded"
-          :recentlyUpdatedKey="recentlyUpdated"
-          @edit="onEdit"
-          @delete="deleteWord"
-        />
-        <PaginationControls
-          :current-page="pagination.current_page"
-          :last-page="pagination.last_page"
-          @page-changed="onPageChange"
-          class="mt-4"
-        />
         <!-- Edit Word Form -->
         <div v-if="editingWord" class="mt-6">
           <EditWordForm
@@ -92,7 +107,6 @@ import WordsTable from '@/components/WordsTable.vue'
 import AddWordForm from '@/components/AddWordForm.vue'
 import EditWordForm from '@/components/EditWordForm.vue'
 import PaginationControls from '@/components/PaginationControls.vue'
-import UnitSelectorForManage from '@/components/UnitSelectorForManage.vue'
 
 const toast = useToast()
 
@@ -101,7 +115,6 @@ axios.defaults.baseURL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/
 axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('apiToken')}`
 
 // Reactive state
-const unit = ref('1')
 const search = ref('')
 const showAddForm = ref(false)
 const editingWord = ref(null)
@@ -121,30 +134,16 @@ const pagination = reactive({
 const words = ref([])
 const availableUnits = ref([])
 
-const fetchUnits = async () => {
-  try {
-    const { data } = await axios.get('/units')
-    const filtered = data.filter((unit) => unit && unit.trim() !== '')
-
-    availableUnits.value = filtered
-    unit.value = filtered[0] || ''
-  } catch (err) {
-    toast.error('Failed to load units.')
-    console.error('❌ fetchUnits error:', err.response || err)
-  }
-}
-
 // Fetch paginated & filtered words
 const fetchWords = async () => {
-  if (!unit.value) return
   isLoading.value = true
 
   try {
-    const { data } = await axios.get(`/words/${unit.value}`, {
+    const { data } = await axios.get('/words', {
       params: {
         page: pagination.current_page,
         per_page: pagination.per_page,
-        search: search.value,
+        search: search.value.trim(),
       },
     })
 
@@ -162,7 +161,7 @@ const fetchWords = async () => {
 }
 
 // Watchers
-watch([unit, search], () => {
+watch([search], () => {
   pagination.current_page = 1
   fetchWords()
 })
@@ -176,10 +175,19 @@ const onPageChange = (page) => {
 // Add a new word
 const createWord = async (wordData) => {
   try {
-    await axios.post('/words', { ...wordData, unit: unit.value })
+    const payload = {
+      unit: wordData.unit,
+      japanese: wordData.japanese,
+      romaji: wordData.romaji,
+      english: wordData.english,
+    }
 
-    toast.success('Word Added')
-    recentlyAdded.value = `${wordData.English}-${unit.value}`
+    const res = await axios.post('/words', payload)
+
+    toast.success(`“${res.data.english}” added in unit “${res.data.unit}”`)
+
+    recentlyAdded.value = `${res.data.english}-${res.data.unit}`
+
     showAddForm.value = false
     fetchWords()
 
@@ -228,7 +236,8 @@ const deleteWord = async (word) => {
 
 // Initial Load
 onMounted(async () => {
-  await fetchUnits()
+  const { data } = await axios.get('/units')
+  availableUnits.value = data.map((u) => u.trim()).filter(Boolean)
   await fetchWords()
 })
 </script>

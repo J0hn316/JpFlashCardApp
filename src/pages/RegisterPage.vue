@@ -32,7 +32,7 @@
       />
 
       <input
-        v-model="password_confirmation"
+        v-model="password_confirm"
         type="password"
         placeholder="Confirm Password"
         class="w-full p-2 border rounded mb-4 dark:bg-gray-700 dark:border-gray-600"
@@ -75,7 +75,7 @@ const handleRegister = async () => {
         name: name.value,
         email: email.value,
         password: password.value,
-        password_confirm: password_confirm.value,
+        password_confirmation: password_confirm.value,
       },
       {
         headers: {

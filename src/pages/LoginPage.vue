@@ -58,7 +58,7 @@ const handleLogin = async () => {
     localStorage.setItem('apiToken', res.data.token)
     router.push('/dashboard')
   } catch (err) {
-    toast.error('Login failed: ' + (err.response?.data?.message || err.message))
+    toast.error('Incorrect email or password')
     console.error(err)
   }
 }

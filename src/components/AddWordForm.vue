@@ -77,10 +77,13 @@ import { ref, watch, defineProps, defineEmits } from 'vue'
 
 const props = defineProps({
   visible: Boolean,
-  selectedUnit: String,
   availableUnits: {
     type: Array,
     default: () => [],
+  },
+  initialEnglish: {
+    type: String,
+    default: '',
   },
 })
 const emit = defineEmits(['submit', 'cancel'])
@@ -97,7 +100,8 @@ watch(
   () => props.visible,
   (isVisible) => {
     if (isVisible) {
-      form.value.unit = props.selectedUnit || ''
+      form.value.unit = props.availableUnits[0] || ''
+      form.value.english = props.initialEnglish.trim() || ''
       errors.value = {}
     } else {
       reset()
@@ -116,7 +120,12 @@ const validate = () => {
 
 const submit = () => {
   if (!validate()) return
-  emit('submit', { ...form.value }) // send form data up
+  emit('submit', {
+    english: form.value.english.trim(),
+    unit: form.value.unit.trim(),
+    japanese: form.value.japanese.trim(),
+    romaji: form.value.romaji.trim(),
+  })
   reset()
 }
 
