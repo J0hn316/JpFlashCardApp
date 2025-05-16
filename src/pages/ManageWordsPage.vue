@@ -110,10 +110,6 @@ import PaginationControls from '@/components/PaginationControls.vue'
 
 const toast = useToast()
 
-// API Setup
-axios.defaults.baseURL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api'
-axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('apiToken')}`
-
 // Reactive state
 const search = ref('')
 const showAddForm = ref(false)

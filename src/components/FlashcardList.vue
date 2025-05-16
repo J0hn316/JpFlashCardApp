@@ -61,12 +61,17 @@
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue'
-import { useStore } from 'vuex'
+import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import Flashcard from './FlashCard.vue'
 
-const store = useStore()
+const props = defineProps({
+  words: {
+    type: Array,
+    required: true,
+  },
+})
+
 const router = useRouter()
 
 // Score tracking
@@ -76,27 +81,16 @@ const missedWords = ref([])
 const currentIndex = ref(0)
 const quizComplete = ref(false)
 
-const currentUnit = computed(() => store.state.words.currentUnit)
-
-const words = computed(() => {
-  if (!currentUnit.value) return []
-  return store.getters['words/getWordsByUnit'](currentUnit.value)
-})
-
-const currentCard = computed(() => {
-  return words.value[currentIndex.value] || null
-})
+const currentCard = computed(() => props.words[currentIndex.value] || null)
 
 // Handlers to process answers and move to the next card
 const handleCorrect = () => {
   correctCount.value++
-  store.dispatch('quiz/submitAnswer', true)
   nextCard()
 }
 
 const handleIncorrect = () => {
   missedCount.value++
-  store.dispatch('quiz/submitAnswer', false)
   if (currentCard.value) {
     missedWords.value.push(currentCard.value)
   }
@@ -104,11 +98,10 @@ const handleIncorrect = () => {
 }
 
 const nextCard = () => {
-  if (currentIndex.value < words.value.length - 1) {
+  if (currentIndex.value < props.words.length - 1) {
     currentIndex.value++
   } else {
     quizComplete.value = true
-    store.dispatch('quiz/saveHighScore')
   }
 }
 
@@ -118,25 +111,7 @@ const retryQuiz = () => {
   missedWords.value = []
   currentIndex.value = 0
   quizComplete.value = false
-  store.dispatch('quiz/resetQuiz')
 }
-
-// Watch for unit change to reset quiz state
-watch(currentUnit, () => {
-  correctCount.value = 0
-  missedCount.value = 0
-  currentIndex.value = 0
-  quizComplete.value = false
-  missedWords.value = []
-  store.dispatch('quiz/resetQuiz')
-})
-
-// Save high score when quiz is complete
-watch(quizComplete, (newVal) => {
-  if (newVal) {
-    store.dispatch('quiz/saveHighScore')
-  }
-})
 
 const goToDashboard = () => {
   router.push('/dashboard')

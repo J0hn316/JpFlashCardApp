@@ -73,7 +73,7 @@
 </template>
 
 <script setup>
-import { ref, watch, defineProps, defineEmits } from 'vue'
+import { ref, defineProps, defineEmits, onMounted } from 'vue'
 
 const props = defineProps({
   visible: Boolean,
@@ -96,18 +96,11 @@ const form = ref({
   romaji: '',
 })
 
-watch(
-  () => props.visible,
-  (isVisible) => {
-    if (isVisible) {
-      form.value.unit = props.availableUnits[0] || ''
-      form.value.english = props.initialEnglish.trim() || ''
-      errors.value = {}
-    } else {
-      reset()
-    }
-  },
-)
+onMounted(() => {
+  form.value.unit = props.availableUnits[0] || ''
+  form.value.english = props.initialEnglish.trim() || ''
+  errors.value = {}
+})
 
 const validate = () => {
   errors.value = {}

@@ -7,8 +7,8 @@
       <!-- Front (Japanese side) -->
       <div class="card-face">
         <div class="text-center">
-          <p class="text-xl font-bold">{{ word.JP.Japanese }}</p>
-          <p class="text-sm text-gray-500 dark:text-gray-300">{{ word.JP.Romaji }}</p>
+          <p class="text-xl font-bold">{{ word.japanese }}</p>
+          <p class="text-sm text-gray-500 dark:text-gray-300">{{ word.romaji }}</p>
         </div>
       </div>
 
@@ -16,7 +16,7 @@
       <div
         class="card-face back-face transform rotate-y-180 bg-blue-100 text-black dark:bg-blue-900 dark:text-white"
       >
-        <p class="text-xl font-semibold">{{ word.English }}</p>
+        <p class="text-xl font-semibold">{{ word.english }}</p>
 
         <div v-if="isFlipped" class="mt-4 flex gap-4">
           <button
@@ -41,7 +41,10 @@
 import { ref, watch, defineProps, defineEmits } from 'vue'
 
 const props = defineProps({
-  word: Object,
+  word: {
+    type: Object,
+    required: true,
+  },
 })
 
 const emit = defineEmits(['correct', 'incorrect'])
