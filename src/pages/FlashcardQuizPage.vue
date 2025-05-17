@@ -16,7 +16,7 @@
 
       <p v-else-if="!words.length">No words found for unit {{ unit }}</p>
       <!-- Flashcard List -->
-      <FlashcardList v-else :words="words" @complete="goToDashboard" />
+      <FlashcardList v-else :words="words" :unit="unit" @complete="goToDashboard" />
     </div>
   </GlobalLayout>
 </template>

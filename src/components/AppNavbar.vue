@@ -3,8 +3,9 @@
     <div class="text-lg font-semibold">JpFlashCard</div>
     <div class="space-x-4">
       <RouterLink to="/dashboard" class="hover:underline">Dashboard</RouterLink>
-      <RouterLink to="/quiz" class="hover:underline">Quiz</RouterLink>
       <RouterLink to="/manage-words" class="hover:underline">Manage</RouterLink>
+      <RouterLink to="/quiz" class="hover:underline">Quiz</RouterLink>
+      <RouterLink to="/history" class="hover:underline">History</RouterLink>
       <button
         @click="isDark = !isDark"
         class="px-3 py-1 rounded border dark:border-gray-400 border-gray-800 text-sm"

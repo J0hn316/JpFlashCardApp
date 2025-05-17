@@ -1,11 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
+// Pages
 import Login from '@/pages/LoginPage.vue'
 import Register from '@/pages/RegisterPage.vue'
 import NotFound from '@/pages/NotFoundPage.vue'
 import Dashboard from '@/pages/DashboardPage.vue'
 import ManageWords from '@/pages/ManageWordsPage.vue'
 import FlashcardQuiz from '@/pages/FlashcardQuizPage.vue'
+
+// View
+import History from '@/views/QuizHistory.vue'
 
 import store from '@/store'
 
@@ -39,6 +43,14 @@ const router = createRouter({
       path: '/quiz',
       name: 'Quiz',
       component: FlashcardQuiz,
+      meta: {
+        requiresAuth: true,
+      },
+    },
+    {
+      path: '/history',
+      name: 'History',
+      component: History,
       meta: {
         requiresAuth: true,
       },

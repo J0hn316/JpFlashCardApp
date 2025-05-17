@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <GlobalLayout>
     <div class="min-h-screen flex items-center justify-center dark:bg-gray-900 transition-colors">
       <div
@@ -25,9 +25,9 @@
       </div>
     </div>
   </GlobalLayout>
-</template>
+</template> -->
 
-<script setup>
+<!-- <script setup>
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
@@ -41,4 +41,48 @@ const highScores = computed(() => store.state.quiz.highScores)
 const goToQuiz = () => {
   router.push('/quiz')
 }
+</script> -->
+
+<template>
+  <GlobalLayout>
+    <div class="p-6 max-w-4xl mx-auto">
+      <h1 class="text-2xl font-bold mb-4">Dashboard</h1>
+
+      <div class="grid grid-cols-3 gap-4">
+        <div class="p-4 bg-white dark:bg-gray-800 rounded shadow text-center">
+          <p class="text-sm">Total Quizzes</p>
+          <p class="text-xl font-bold">{{ stats.total_quizzes }}</p>
+        </div>
+        <div class="p-4 bg-white dark:bg-gray-800 rounded shadow text-center">
+          <p class="text-sm">Average Score</p>
+          <p class="text-xl font-bold">{{ stats.average }}%</p>
+        </div>
+        <div class="p-4 bg-white dark:bg-gray-800 rounded shadow text-center">
+          <p class="text-sm">Best Score</p>
+          <p class="text-xl font-bold">{{ stats.best }}%</p>
+        </div>
+      </div>
+    </div>
+  </GlobalLayout>
+</template>
+
+<script setup>
+import { ref, onMounted } from 'vue'
+import axios from 'axios'
+import GlobalLayout from '@/layout/GlobalLayout.vue'
+
+const stats = ref({
+  total_quizzes: 0,
+  average: 0,
+  best: 0,
+})
+
+onMounted(async () => {
+  try {
+    const { data } = await axios.get('/quiz-results/summary')
+    stats.value = data
+  } catch (error) {
+    console.error('Failed to load stats', error)
+  }
+})
 </script>

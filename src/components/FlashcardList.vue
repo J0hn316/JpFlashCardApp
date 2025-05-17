@@ -32,8 +32,8 @@
             <span v-else>You missed the following words:</span>
           </h3>
           <TransitionGroup name="fade-in-word" tag="ul" class="list-disc list-inside space-y-1">
-            <li v-for="(word, index) in missedWords" :key="word.JP.Japanese + index">
-              {{ word.JP.Japanese }} ({{ word.English }})
+            <li v-for="(word, index) in missedWords" :key="word.Japanese + index">
+              {{ word.Japanese }} ({{ word.English }})
             </li>
           </TransitionGroup>
         </div>
@@ -61,27 +61,51 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { useRouter } from 'vue-router'
+import { useToast } from 'vue-toastification'
+
 import Flashcard from './FlashCard.vue'
+import axios from 'axios'
 
 const props = defineProps({
   words: {
     type: Array,
     required: true,
   },
+  unit: {
+    type: String,
+    required: true,
+  },
 })
 
-const router = useRouter()
+const emit = defineEmits(['complete'])
 
-// Score tracking
+const router = useRouter()
+const toast = useToast()
+
+// Quiz state
 const correctCount = ref(0)
 const missedCount = ref(0)
 const missedWords = ref([])
 const currentIndex = ref(0)
 const quizComplete = ref(false)
 
+// The current card object
 const currentCard = computed(() => props.words[currentIndex.value] || null)
+
+// Whenever the word list changes (e.g. unit changes), reset everything
+watch(
+  () => props.words,
+  () => {
+    // Reset quiz state when words change
+    correctCount.value = 0
+    missedCount.value = 0
+    missedWords.value = []
+    currentIndex.value = 0
+    quizComplete.value = false
+  },
+)
 
 // Handlers to process answers and move to the next card
 const handleCorrect = () => {
@@ -91,9 +115,7 @@ const handleCorrect = () => {
 
 const handleIncorrect = () => {
   missedCount.value++
-  if (currentCard.value) {
-    missedWords.value.push(currentCard.value)
-  }
+  if (currentCard.value) missedWords.value.push(currentCard.value)
   nextCard()
 }
 
@@ -104,6 +126,30 @@ const nextCard = () => {
     quizComplete.value = true
   }
 }
+
+// As soon as quizComplete flips to true, POST the results
+watch(
+  () => quizComplete.value,
+  async (isDone) => {
+    if (!isDone) return
+
+    try {
+      await axios.post('/quiz-results', {
+        unit: props.unit,
+        score: correctCount.value,
+        total_questions: props.words.length,
+        missed_words: missedWords.value.map((w) => w.id), // send only the ids of the missed words
+      })
+      toast.success('Quiz results submitted!')
+    } catch (error) {
+      toast.error('Failed to submit quiz results')
+      console.error(error)
+    }
+    //
+    emit('complete')
+  },
+  { immediate: false },
+)
 
 const retryQuiz = () => {
   correctCount.value = 0
