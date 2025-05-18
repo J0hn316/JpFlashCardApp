@@ -18,51 +18,11 @@
         @incorrect="handleIncorrect"
       />
     </div>
-
-    <!-- Quiz Complete Message -->
-    <Transition name="fade-slide" appear>
-      <div v-if="quizComplete" class="quiz-complete">
-        <h2 class="text-xl font-bold mb-2">You've completed the quiz!</h2>
-        <p class="mb-2">You got {{ correctCount }} correct and {{ missedCount }} incorrect.</p>
-
-        <!-- Missed Words List -->
-        <div v-if="missedWords.length > 0" class="mt-4 text-red-600 dark:text-red-400">
-          <h3 class="font-semibold mb-2">
-            <span v-if="missedWords.length === 1">You missed the following word:</span>
-            <span v-else>You missed the following words:</span>
-          </h3>
-          <TransitionGroup name="fade-in-word" tag="ul" class="list-disc list-inside space-y-1">
-            <li v-for="(word, index) in missedWords" :key="word.Japanese + index">
-              {{ word.Japanese }} ({{ word.English }})
-            </li>
-          </TransitionGroup>
-        </div>
-
-        <!-- Buttons -->
-        <Transition name="fade-slide" appear>
-          <div class="mt-6 flex flex-col sm:flex-row justify-center gap-4">
-            <button
-              @click="retryQuiz"
-              class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition"
-            >
-              Play again 🤔
-            </button>
-            <button
-              @click="goToDashboard"
-              class="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600 transition"
-            >
-              Go to Dashboard
-            </button>
-          </div>
-        </Transition>
-      </div>
-    </Transition>
   </div>
 </template>
 
 <script setup>
 import { ref, computed, watch } from 'vue'
-import { useRouter } from 'vue-router'
 import { useToast } from 'vue-toastification'
 
 import Flashcard from './FlashCard.vue'
@@ -80,8 +40,6 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['complete'])
-
-const router = useRouter()
 const toast = useToast()
 
 // Quiz state
@@ -150,18 +108,6 @@ watch(
   },
   { immediate: false },
 )
-
-const retryQuiz = () => {
-  correctCount.value = 0
-  missedCount.value = 0
-  missedWords.value = []
-  currentIndex.value = 0
-  quizComplete.value = false
-}
-
-const goToDashboard = () => {
-  router.push('/dashboard')
-}
 </script>
 
 <style scoped lang="postcss">

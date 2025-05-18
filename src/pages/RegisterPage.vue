@@ -1,12 +1,11 @@
 <template>
   <div class="flex flex-col items-center justify-center">
-    <h1>Welcome to the Japanese Flashcard Game</h1>
-    <p class="text-lg">Will add intro text here later</p>
+    <h1 class="text-xl font-bold">Welcome to the Japanese Flashcard Game</h1>
   </div>
   <div class="min-h-screen flex items-center justify-center dark:bg-gray-900">
     <form
       @submit.prevent="handleRegister"
-      class="bg-white p-6 rounded shadow-md w-80 dark:bg-gray-800 dark:text-white"
+      class="bg-gray-100 p-6 rounded shadow-md w-80 dark:bg-gray-800 dark:text-white"
     >
       <h2 class="text-xl mb-4">Sign up</h2>
 

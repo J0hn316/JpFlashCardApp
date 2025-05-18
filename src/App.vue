@@ -1,6 +1,6 @@
 <template>
   <div
-    class="min-h-screen bg-blue-500 text-slate-800 dark:bg-gray-900 dark:text-white transition-colors"
+    class="min-h-screen bg-gray-300 text-slate-800 dark:bg-gray-900 dark:text-white transition-colors"
   >
     <AppNavbar v-if="showNavbar" />
     <!-- Global Layout Wrapper around RouterView -->
